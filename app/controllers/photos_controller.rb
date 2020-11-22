@@ -1,11 +1,11 @@
 class PhotosController < ApplicationController
 
   get "/photos" do
-    erb :"/photos/index.html"
+    erb :"/photos/index"
   end
 
   get "/photos/new" do
-    erb :"/photos/new.html"
+    erb :"/photos/new"
   end
 
   post "/photos" do
@@ -13,11 +13,11 @@ class PhotosController < ApplicationController
   end
 
   get "/photos/:id" do
-    erb :"/photos/show.html"
+    erb :"/photos/show"
   end
 
   get "/phot_os/:id/edit" do
-    erb :"/photos/edit.html"
+    erb :"/photos/edit"
   end
 
   patch "/photos/:id" do

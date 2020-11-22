@@ -1,11 +1,11 @@
 class RollsController < ApplicationController
 
   get "/rolls" do
-    erb :"/rolls/index.html"
+    erb :"/rolls/index"
   end
 
   get "/rolls/new" do
-    erb :"/rolls/new.html"
+    erb :"/rolls/new"
   end
 
   post "/rolls" do
@@ -13,11 +13,11 @@ class RollsController < ApplicationController
   end
 
   get "/rolls/:id" do
-    erb :"/rolls/show.html"
+    erb :"/rolls/show"
   end
 
   get "/rolls/:id/edit" do
-    erb :"/rolls/edit.html"
+    erb :"/rolls/edit"
   end
 
   patch "/rolls/:id" do

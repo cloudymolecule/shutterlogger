@@ -12,6 +12,7 @@ class CreatePhotos < ActiveRecord::Migration
       t.integer :rating
       t.integer :roll_id
       t.integer :len_id
+      t.integer :camera_id
       t.integer :user_id
       t.timestamps null: false
     end

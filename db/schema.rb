@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20201122044544) do
     t.integer  "rating"
     t.integer  "roll_id"
     t.integer  "len_id"
+    t.integer  "camera_id"
     t.integer  "user_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false

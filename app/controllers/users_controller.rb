@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
 
   get "/users" do
-    erb :"/users/index.html"
+    erb :"/users/index"
   end
 
   get "/users/new" do
-    erb :"/users/new.html"
+    erb :"/users/new"
   end
 
   post "/users" do
@@ -13,11 +13,11 @@ class UsersController < ApplicationController
   end
 
   get "/users/:id" do
-    erb :"/users/show.html"
+    erb :"/users/show"
   end
 
   get "/users/:id/edit" do
-    erb :"/users/edit.html"
+    erb :"/users/edit"
   end
 
   patch "/users/:id" do

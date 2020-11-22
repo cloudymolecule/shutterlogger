@@ -1,11 +1,11 @@
 class CamerasController < ApplicationController
 
   get "/cameras" do
-    erb :"/cameras/index.html"
+    erb :"/cameras/index"
   end
 
   get "/cameras/new" do
-    erb :"/cameras/new.html"
+    erb :"/cameras/new"
   end
 
   post "/cameras" do
@@ -13,11 +13,11 @@ class CamerasController < ApplicationController
   end
 
   get "/cameras/:id" do
-    erb :"/cameras/show.html"
+    erb :"/cameras/show"
   end
 
   get "/cameras/:id/edit" do
-    erb :"/cameras/edit.html"
+    erb :"/cameras/edit"
   end
 
   patch "/cameras/:id" do

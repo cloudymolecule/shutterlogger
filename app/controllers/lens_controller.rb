@@ -2,11 +2,11 @@ class LensController < ApplicationController
 
 
   get "/lens" do
-    erb :"/lens/index.html"
+    erb :"/lens/index"
   end
   
   get "/lens/new" do
-    erb :"/lens/new.html"
+    erb :"/lens/new"
   end
 
   post "/lens" do
@@ -14,11 +14,11 @@ class LensController < ApplicationController
   end
 
   get "/lens/:id" do
-    erb :"/lens/show.html"
+    erb :"/lens/show"
   end
 
   get "/lens/:id/edit" do
-    erb :"/lens/edit.html"
+    erb :"/lens/edit"
   end
 
   patch "/lens/:id" do
