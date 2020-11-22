@@ -9,7 +9,7 @@ class RollsController < ApplicationController
   end
 
   post "/rolls" do
-    redirect "/rolls"
+    redirect to "/rolls"
   end
 
   get "/rolls/:id" do
@@ -21,11 +21,11 @@ class RollsController < ApplicationController
   end
 
   patch "/rolls/:id" do
-    redirect "/rolls/:id"
+    redirect to "/rolls/:id"
   end
 
   delete "/rolls/:id/delete" do
-    redirect "/rolls"
+    redirect to "/rolls"
   end
 
 end

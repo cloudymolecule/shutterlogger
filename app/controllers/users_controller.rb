@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   post "/users" do
-    redirect "/users"
+    redirect to "/users"
   end
 
   get "/users/:id" do
@@ -21,11 +21,11 @@ class UsersController < ApplicationController
   end
 
   patch "/users/:id" do
-    redirect "/users/:id"
+    redirect to "/users/:id"
   end
 
   delete "/users/:id/delete" do
-    redirect "/users"
+    redirect to "/users"
   end
 
 end

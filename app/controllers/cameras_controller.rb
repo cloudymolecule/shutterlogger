@@ -9,7 +9,7 @@ class CamerasController < ApplicationController
   end
 
   post "/cameras" do
-    redirect "/cameras"
+    redirect to "/cameras"
   end
 
   get "/cameras/:id" do
@@ -21,11 +21,11 @@ class CamerasController < ApplicationController
   end
 
   patch "/cameras/:id" do
-    redirect "/cameras/:id"
+    redirect to "/cameras/:id"
   end
 
   delete "/cameras/:id/delete" do
-    redirect "/cameras"
+    redirect to "/cameras"
   end
   
 end

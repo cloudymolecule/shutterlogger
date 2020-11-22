@@ -10,7 +10,7 @@ class LensController < ApplicationController
   end
 
   post "/lens" do
-    redirect "/lens"
+    redirect to "/lens"
   end
 
   get "/lens/:id" do
@@ -22,11 +22,11 @@ class LensController < ApplicationController
   end
 
   patch "/lens/:id" do
-    redirect "/lens/:id"
+    redirect to "/lens/:id"
   end
 
   delete "/lens/:id/delete" do
-    redirect "/lens"
+    redirect to "/lens"
   end
   
 end

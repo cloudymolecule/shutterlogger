@@ -9,7 +9,7 @@ class PhotosController < ApplicationController
   end
 
   post "/photos" do
-    redirect "/photos"
+    redirect to "/photos"
   end
 
   get "/photos/:id" do
@@ -21,11 +21,11 @@ class PhotosController < ApplicationController
   end
 
   patch "/photos/:id" do
-    redirect "/photos/:id"
+    redirect to "/photos/:id"
   end
 
   delete "/photos/:id/delete" do
-    redirect "/photos"
+    redirect to "/photos"
   end
 
 end
