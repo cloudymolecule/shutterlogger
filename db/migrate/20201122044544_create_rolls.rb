@@ -6,7 +6,7 @@ class CreateRolls < ActiveRecord::Migration
       t.string :brand
       t.string :comments
       t.integer :camera_id
-      t.integer user_id
+      t.integer :user_id
       t.timestamps null: false
     end
   end

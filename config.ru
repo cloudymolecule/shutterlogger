@@ -9,5 +9,5 @@ use RollsController
 use CameraPhotosController
 use PhotosController
 use CamerasController
-use LensController
+use LensesController
 use UsersController
