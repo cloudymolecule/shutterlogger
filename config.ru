@@ -8,6 +8,6 @@ run ApplicationController
 use RollsController
 use PhotosController
 use CamerasController
-use LensesController
+use LensController
 use UsersController
 use Rack::MethodOverride

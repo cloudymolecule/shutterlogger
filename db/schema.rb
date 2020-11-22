@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20201122044544) do
   create_table "lens", force: :cascade do |t|
     t.string   "make"
     t.string   "model"
+    t.string   "focal_range"
     t.float    "max_aperture"
     t.float    "min_aperture"
     t.integer  "camera_id"
@@ -44,16 +45,18 @@ ActiveRecord::Schema.define(version: 20201122044544) do
   create_table "photos", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
-    t.integer  "shutter"
+    t.string   "shutter"
     t.float    "aperture"
+    t.string   "focal_length"
     t.string   "date"
     t.string   "time"
     t.string   "location"
     t.integer  "rating"
     t.integer  "roll_id"
+    t.integer  "len_id"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "rolls", force: :cascade do |t|
