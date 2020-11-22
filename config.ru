@@ -6,7 +6,6 @@ end
 
 run ApplicationController
 use RollsController
-use CameraPhotosController
 use PhotosController
 use CamerasController
 use LensesController
