@@ -34,8 +34,8 @@
     font-size: 20px;
   }
 
-  span {
-    margin-left: 20%;
+  span#home {
+    margin-left: 5%;
   }
 
   form {

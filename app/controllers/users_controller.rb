@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   post "/signup" do
     user = User.new(params[:user])
-    if user.save && user.authenticate(params[:user][:password])
+    if user.save
       session[:user_id] = user.id
       redirect to "/users/#{user.id}"
     else
@@ -25,7 +25,15 @@ class UsersController < ApplicationController
     if user && user.authenticate(params[:user][:password])
       session[:user_id] = user.id
       redirect to "/users/#{user.id}"
+    else
+      flash[:message] = "Incorrect, please try again."
+      redirect to "/login"
     end
+  end
+
+  get "/logout" do
+    session.clear
+    redirect to "/login"
   end
 
   post "/users" do
@@ -33,6 +41,7 @@ class UsersController < ApplicationController
   end
 
   get "/users/:id" do
+    @user = User.find_by(id: params[:id])
     erb :"/users/show"
   end
 
