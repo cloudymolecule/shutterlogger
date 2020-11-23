@@ -25,6 +25,16 @@
     padding: 70px 100px 100px 100px;
   }
 
+  div#show {
+    margin: auto;
+    width: 60%;
+    border: 0px
+    padding: 10px;
+    background-color: white;
+    text-align: center;
+    padding: 70px 100px 100px 100px;
+  }
+
   h3#log {
     text-align: center;
   }
