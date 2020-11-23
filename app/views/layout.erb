@@ -6,12 +6,12 @@
   </head>
   <body>
       <% if logged_in? %>
-        <a href="/users/<%= current_user.id %>">HOME</a>
-        <a href="/logout">LOG OUT</a>
-        <h1><%= "#{current_user.username}'s ShutterLogger" %></h1><br /><br />
+        <a id="homelog" href="/users/<%= current_user.id %>">HOME</a>
+        <a id="homelog" href="/logout">LOG OUT</a>
+        <h1 id="banner"><%= "#{current_user.username}'s ShutterLogger" %></h1><br /><br />
         <% else %>
         <a href="/">HOME</a>
-        <h1>ShutterLogger</h1><br /><br />
+        <h1 id="banner">ShutterLogger</h1><br /><br />
       <% end %>
       
         <%= yield %>

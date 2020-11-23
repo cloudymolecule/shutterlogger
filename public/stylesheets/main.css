@@ -1,8 +1,14 @@
   body {
-    background-color: rgb(162, 145, 120);
+    background-color: rgb(249, 234, 212);
     color: #333;
     font-family: Sans-Serif;
     line-height: 18px;
+  }
+
+  h1#banner {
+    text-shadow: 6px 6px rgb(255, 155, 124);
+    font-size: 60px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
 
   h1 {
@@ -28,11 +34,24 @@
   div#show {
     margin: auto;
     width: 60%;
-    border: 0px
+    border: 0px;
     padding: 10px;
     background-color: white;
     text-align: center;
     padding: 70px 100px 100px 100px;
+  }
+
+  div#mainmenu {
+    margin: auto;
+    width: 30%;
+    height:60px;
+    padding: 10px;
+    text-align: center;
+    background-color:rgb(255, 215, 182);
+    float: none;
+    padding:10px;
+    border:2px solid rgb(211, 148, 92);
+    padding: 10px 100px 50px 100px;
   }
 
   h3#log {
@@ -58,4 +77,21 @@
 
   p#or {
     text-align: center;
+  }
+
+  span#add { 
+      background-color: rgb(255, 228, 196)
+  }
+
+  a#new {
+    text-decoration: none;
+  }
+
+  a#homelog {
+    padding: 30px;
+  }
+
+  span#obmen {
+    padding: 20px;
+    font-size: 20px;
   }
