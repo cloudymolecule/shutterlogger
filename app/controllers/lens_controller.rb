@@ -14,6 +14,7 @@ class LensController < ApplicationController
   end
 
   get "/lens/:id" do
+    @len = Len.find_by(id: params[:id])
     erb :"/lens/show"
   end
 

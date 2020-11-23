@@ -5,7 +5,12 @@ class CamerasController < ApplicationController
   end
 
   get "/cameras/new" do
-    erb :"/cameras/new"
+    if logged_in?
+      erb :"/cameras/new"
+    else
+      redirect to "/login"
+    end
+    
   end
 
   post "/cameras" do
@@ -13,6 +18,7 @@ class CamerasController < ApplicationController
   end
 
   get "/cameras/:id" do
+    @camera = Camera.find_by(id: params[:id])
     erb :"/cameras/show"
   end
 

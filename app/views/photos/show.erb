@@ -1,1 +1,10 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<div id="show">
+    <h3 id="log"><%= "Photo name: '#{@photo.name}'" %></h3><br />
+    <p><%= "Rating: #{@photo.rating} stars" %></p>
+    <p><%= "Description: #{@photo.description}" %></p><br /><br />
+    <p><%= "Shutter Speed: #{@photo.shutter} second/s" %></p>
+    <p><%= "Aperture: F#{@photo.aperture}" %></p>
+    <p><%= "Focal length: #{@photo.focal_length}" %></p>
+    <p><%= "Date and time taken: #{@photo.date}, #{@photo.time}" %></p>
+    <p><%= "Location: #{@photo.location}" %></p>
+</div><br /><br />

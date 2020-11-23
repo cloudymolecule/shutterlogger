@@ -5,9 +5,9 @@ class UsersController < ApplicationController
     erb :"/users/index"
   end
 
-  get "/users/new" do
-    erb :"/users/new"
-  end
+  # get "/users/new" do
+  #   erb :"/users/new"
+  # end
 
   post "/signup" do
     user = User.new(params[:user])
@@ -36,9 +36,9 @@ class UsersController < ApplicationController
     redirect to "/login"
   end
 
-  post "/users" do
-    redirect to "/users"
-  end
+  # post "/users" do
+  #   redirect to "/users"
+  # end
 
   get "/users/:id" do
     @user = User.find_by(id: params[:id])

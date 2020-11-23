@@ -13,6 +13,7 @@ class PhotosController < ApplicationController
   end
 
   get "/photos/:id" do
+    @photo = Photo.find_by(id: params[:id])
     erb :"/photos/show"
   end
 

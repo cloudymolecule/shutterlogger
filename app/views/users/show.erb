@@ -1,22 +1,28 @@
+<h3>Main Menu</h3><span></span>
 <div id="show">
-    <h3 id="log">main menu</h3><br />
-    <a id="link" href="/cameras">Cameras</a><span></span><br />
-    <a id="link" href="/lens">Lenses</a><span></span><br />
-    <a id="link" href="/rolls">Film Rolls</a><span></span><br />
-    <a id="link" href="/photos">Photos</a><br />
+    <h3 id="log">Cameras</h3><br />
+    <% @user.cameras.each do |camera| %>
+        <a href="/cameras/<%= camera.id %>"><h3><%= camera.make %><%= " #{camera.model}" %></h3> </a><span></span><br />
+    <% end %>
 </div><br /><br />
 
 <div id="show">
-
+    <h3 id="log">Lenses</h3><br />
+    <% @user.lens.each do |len| %>
+        <a href="/lens/<%= len.id %>"><h3><%= len.make %><%= " #{len.model}" %></h3> </a><span></span><br />
+    <% end %>
 </div><br /><br />
 
 <div id="show">
-
+    <h3 id="log">Rolls</h3><br />
+    <% @user.rolls.each do |roll| %>
+        <a href="/rolls/<%= roll.id %>"><h3><%= roll.brand %><%= " - #{roll.exp_count} exposures left" %></h3> </a><span></span><br />
+    <% end %>
 </div><br /><br />
 
 <div id="show">
-
+    <h3 id="log">Photos</h3><br />
+    <% @user.photos.each do |photo| %>
+        <a href="/photos/<%= photo.id %>"><h3><%= photo.name %><%= " - #{photo.rating} star rating" %></h3> </a><span></span><br />
+    <% end %>
 </div><br /><br />
-
-
-

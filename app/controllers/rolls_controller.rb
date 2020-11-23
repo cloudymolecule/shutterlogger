@@ -13,6 +13,7 @@ class RollsController < ApplicationController
   end
 
   get "/rolls/:id" do
+    @roll = Roll.find_by(id: params[:id])
     erb :"/rolls/show"
   end
 
