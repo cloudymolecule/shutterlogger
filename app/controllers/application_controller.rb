@@ -7,14 +7,31 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
     enable :sessions
     set :session_secret, ENV["SESSION_SECRET"]
+    register Sinatra::Flash
   end
 
   get "/" do
-    erb :welcome
+    erb :index
   end
 
   get "/signup" do
     erb :"/users/signup"
+  end
+
+  get "/login" do
+    erb :"/users/login"
+  end
+
+  helpers do
+
+    def logged_in?
+      !!session[:user_id]
+    end
+
+    def who
+      who = User.find_by(id: session[:user_id])
+    end
+    
   end
 
 end
