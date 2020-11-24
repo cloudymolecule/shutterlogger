@@ -1,1 +1,7 @@
-<h1>This is the Model's index page.</h1>
+<div id="show">
+    <h3 id="log">Rolls</h3><br />
+    <% @rolls.each do |roll| %>
+        <a href="/rolls/<%= roll.id %>"><h3><%= roll.brand %><%= " - #{roll.exp_count} exposures left" %></h3> </a><span></span><br />
+    <% end %>
+    <a href="/rolls/new" id="new"><span id="add">Add a new Film Roll</span></a>
+</div><br /><br />

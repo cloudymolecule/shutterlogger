@@ -1,6 +1,7 @@
 class RollsController < ApplicationController
 
   get "/rolls" do
+    @rolls = current_user.rolls
     erb :"/rolls/index"
   end
 

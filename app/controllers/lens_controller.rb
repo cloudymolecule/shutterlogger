@@ -2,6 +2,7 @@ class LensController < ApplicationController
 
 
   get "/lens" do
+    @lens = current_user.lens
     erb :"/lens/index"
   end
   

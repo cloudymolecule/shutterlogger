@@ -1,5 +1,7 @@
-
-<% current_user.cameras.each do |camera| %>
-    <h3><%= camera.make %></h3>
-    <p><%= camera.model %></p>
-<% end %>
+<div id="show">
+    <h3 id="log">Cameras</h3><br />
+    <% @cameras.each do |camera| %>
+        <a href="/cameras/<%= camera.id %>"><h3><%= camera.make %><%= " #{camera.model}" %></h3> </a><span></span><br />
+    <% end %>
+    <a href="/cameras/new" id="new"><span id="add">Add a new Camera</span></a>
+</div><br /><br />

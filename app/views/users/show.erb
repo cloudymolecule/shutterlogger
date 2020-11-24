@@ -1,4 +1,12 @@
 <div id="mainmenu">
+    <h4>Looks at your...</h4>
+    <a href="/cameras" id="new"><span id="obmen">Cameras</span></a>
+    <a href="/lens" id="new"><span id="obmen">Lenses</span></a>
+    <a href="/rolls" id="new"><span id="obmen">Film Rolls</span></a>
+    <a href="/photos" id="new"><span id="obmen">Photos</span></a>
+</div><br /><br />
+
+<div id="mainmenu">
     <h4>Add a new...</h4>
     <a href="/cameras/new" id="new"><span id="obmen">Camera</span></a>
     <a href="/lens/new" id="new"><span id="obmen">Lens</span></a>
@@ -6,34 +14,3 @@
     <a href="/photos/new" id="new"><span id="obmen">Photo</span></a>
 </div><br /><br />
 
-<div id="show">
-    <h3 id="log">Cameras</h3><br />
-    <% @user.cameras.each do |camera| %>
-        <a href="/cameras/<%= camera.id %>"><h3><%= camera.make %><%= " #{camera.model}" %></h3> </a><span></span><br />
-    <% end %>
-    <a href="/cameras/new" id="new"><span id="add">Add a new Camera</span></a>
-</div><br /><br />
-
-<div id="show">
-    <h3 id="log">Lenses</h3><br />
-    <% @user.lens.each do |len| %>
-        <a href="/lens/<%= len.id %>"><h3><%= len.make %><%= " #{len.model}" %></h3> </a><span></span><br />
-    <% end %>
-    <a href="/lens/new" id="new"><span id="add">Add a new Lens</span></a>
-</div><br /><br />
-
-<div id="show">
-    <h3 id="log">Rolls</h3><br />
-    <% @user.rolls.each do |roll| %>
-        <a href="/rolls/<%= roll.id %>"><h3><%= roll.brand %><%= " - #{roll.exp_count} exposures left" %></h3> </a><span></span><br />
-    <% end %>
-    <a href="/rolls/new" id="new"><span id="add">Add a new Film Roll</span></a>
-</div><br /><br />
-
-<div id="show">
-    <h3 id="log">Photos</h3><br />
-    <% @user.photos.each do |photo| %>
-        <a href="/photos/<%= photo.id %>"><h3><%= photo.name %><%= " - #{photo.rating} star rating" %></h3> </a><span></span><br />
-    <% end %>
-    <a href="/photos/new" id="new"><span id="add">Add a new Photo</span></a>
-</div><br /><br />

@@ -1,6 +1,7 @@
 class CamerasController < ApplicationController
 
   get "/cameras" do
+    @cameras = current_user.cameras
     erb :"/cameras/index"
   end
 

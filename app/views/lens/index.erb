@@ -1,1 +1,7 @@
-<h1>This is the Model's index page.</h1>
+<div id="show">
+    <h3 id="log">Lenses</h3><br />
+    <% @lens.each do |len| %>
+        <a href="/lens/<%= len.id %>"><h3><%= len.make %><%= " #{len.model}" %></h3> </a><span></span><br />
+    <% end %>
+    <a href="/lens/new" id="new"><span id="add">Add a new Lens</span></a>
+</div><br /><br />

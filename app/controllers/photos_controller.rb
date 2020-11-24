@@ -1,6 +1,7 @@
 class PhotosController < ApplicationController
 
   get "/photos" do
+    @photos = current_user.photos
     erb :"/photos/index"
   end
 
