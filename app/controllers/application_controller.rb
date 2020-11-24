@@ -39,7 +39,7 @@ class ApplicationController < Sinatra::Base
         return "The camera is currently UNLOADED with film."
       end
     end
-    
+
   end
 
 end

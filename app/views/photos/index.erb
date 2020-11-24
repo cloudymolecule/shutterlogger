@@ -1,7 +1,7 @@
 <div id="show">
     <h3 id="log">Photos</h3><br />
     <% @photos.each do |photo| %>
-        <a href="/photos/<%= photo.id %>"><h3><%= photo.name %><%= " - #{photo.rating} star rating" %></h3> </a><span></span><br />
-    <% end %>
-    <a href="/photos/new" id="new"><span id="add">Add a new Photo</span></a>
+        <a id="showlinks" href="/photos/<%= photo.id %>"><%= photo.name %><%= " - #{photo.rating} star rating" %> </a><br /><br />
+    <% end %><br /><br />
+    <a href="/photos/new" id="new">Add a new Photo</a>
 </div><br /><br />

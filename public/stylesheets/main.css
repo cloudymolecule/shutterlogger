@@ -23,28 +23,21 @@
 
   div#center {
     margin: auto;
-    width: fit-content;
-    border: 0px
+    width: 20%;
+    height: auto;
     padding: 10px;
-    background-color: white;
     text-align: center;
-    padding: 70px 100px 100px 100px;
+    background-color:rgb(255, 215, 182);
+    float: none;
+    padding:10px;
+    border:2px solid rgb(211, 148, 92);
+    padding: 10px 100px 50px 100px;
   }
 
   div#show {
     margin: auto;
-    width: 60%;
-    border: 0px;
-    padding: 10px;
-    background-color: white;
-    text-align: center;
-    padding: 70px 100px 100px 100px;
-  }
-
-  div#mainmenu {
-    margin: auto;
     width: 35%;
-    height:60px;
+    height: auto;
     padding: 10px;
     text-align: center;
     background-color:rgb(255, 215, 182);
@@ -79,13 +72,11 @@
     text-align: center;
   }
 
-  span#add { 
-      background-color: rgb(255, 228, 196)
+  a#showlinks {
+    font-size: 20px;
   }
 
-  a#new {
-    text-decoration: none;
-  }
+  
 
   a#homelog {
     padding: 30px;
@@ -94,4 +85,28 @@
   span#obmen {
     padding: 20px;
     font-size: 20px;
+  }
+
+  a:link {
+    color: rgb(142, 66, 0);
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
+  a:visited {
+    color: rgb(101, 52, 9);
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: rgb(255, 140, 0);
+    background-color: rgb(65, 36, 0);
+    text-decoration: none;
+  }
+  
+  a:active {
+    color: rgb(50, 31, 0);
+    background-color: rgb(255, 140, 0);
+    text-decoration: transparent;
   }

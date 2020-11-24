@@ -1,7 +1,7 @@
 <div id="show">
     <h3 id="log">Cameras</h3><br />
     <% @cameras.each do |camera| %>
-        <a href="/cameras/<%= camera.id %>"><h3><%= camera.make %><%= " #{camera.model}" %></h3> </a><span></span><br />
-    <% end %>
-    <a href="/cameras/new" id="new"><span id="add">Add a new Camera</span></a>
+        <a id="showlinks" href="/cameras/<%= camera.id %>"><%= camera.make %><%= " #{camera.model}" %> </a><br /><br />
+    <% end %><br /><br />
+    <a href="/cameras/new" id="new">Add a new Camera</a>
 </div><br /><br />

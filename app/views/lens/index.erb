@@ -1,7 +1,9 @@
 <div id="show">
     <h3 id="log">Lenses</h3><br />
     <% @lens.each do |len| %>
-        <a href="/lens/<%= len.id %>"><h3><%= len.make %><%= " #{len.model}" %></h3> </a><span></span><br />
-    <% end %>
-    <a href="/lens/new" id="new"><span id="add">Add a new Lens</span></a>
+        <a id="showlinks" href="/lens/<%= len.id %>"><%= len.make %><%= " #{len.model}" %> </a><br /><br />
+    <% end %><br /><br />
+    <a href="/lens/new" id="new">Add a new Lens</a>
 </div><br /><br />
+
+
