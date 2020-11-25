@@ -4,7 +4,7 @@ class CreatePhotos < ActiveRecord::Migration
       t.string :name
       t.string :description
       t.string :shutter
-      t.float :aperture
+      t.string :aperture
       t.string :focal_length
       t.string :date
       t.string :time

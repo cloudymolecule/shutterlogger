@@ -13,7 +13,7 @@
         <div id="selectcam">
             <p>Select Rating:</p>
             <label for="1">1</label>
-            <input type="radio" id="1" name="photo[rating]" value="">
+            <input type="radio" id="1" name="photo[rating]" value="1" checked>
 
             <label for="2">2</label>
             <input type="radio" id="2" name="photo[rating]" value="2">
@@ -78,7 +78,7 @@
         </div>
         <% current_user.lens.all.each do |len| %>
             <div id="radio">
-                <input type="radio" name="photo[len_id]" id="<%= len.id %>" value="<%= len.id %>"><%= " #{len.make} / Model: #{len.model} (belongs to)"%><br>
+                <input type="radio" name="photo[len_id]" id="<%= len.id %>" value="<%= len.id %>"><%= " #{len.make} / Model: #{len.model} (belongs to: #{len.camera.make}/#{len.camera.model})"%><br>
             </div>
         <% end %><br>
         

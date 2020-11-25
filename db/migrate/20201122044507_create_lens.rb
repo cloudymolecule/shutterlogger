@@ -4,8 +4,8 @@ class CreateLens < ActiveRecord::Migration
       t.string :make
       t.string :model
       t.string :focal_range
-      t.float :max_aperture
-      t.float :min_aperture
+      t.string :max_aperture
+      t.string :min_aperture
       t.integer :camera_id
       t.integer :user_id
       t.timestamps null: false
