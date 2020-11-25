@@ -33,7 +33,7 @@ class ApplicationController < Sinatra::Base
     end
 
     def loaded
-      if @camera.loaded == 1
+      if @camera.loaded == true
         return "The camera is currently LOADED with film."
       else
         return "The camera is currently UNLOADED with film."

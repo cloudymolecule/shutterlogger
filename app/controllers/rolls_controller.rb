@@ -24,6 +24,7 @@ class RollsController < ApplicationController
     if roll.save
       camera = Camera.find_by(id: params[:roll][:camera_id])
       camera.loaded = 1
+      camera.save
       redirect to "/rolls/#{roll.id}"
     else
       @errors = []
