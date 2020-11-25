@@ -15,7 +15,21 @@ class CamerasController < ApplicationController
   end
 
   post "/cameras" do
-    redirect to "/cameras"
+    camera = Camera.new(
+      nickname: params[:camera][:nickname],
+      make: params[:camera][:make],
+      model: params[:camera][:model],
+      loaded: 0,
+      user_id: params[:camera][:user_id],
+      created_at: Time.now,
+      updated_at: Time.now
+    )
+    if camera.save
+      redirect to "/cameras/#{camera.id}"
+    else
+      @errors = camera.errors.full_messages
+      erb :"/cameras/new"
+    end
   end
 
   get "/cameras/:id" do

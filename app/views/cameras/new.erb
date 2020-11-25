@@ -1,1 +1,27 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<div id="newform">
+    <% if @errors %>
+        <p id="error">Error/s when adding camera:</p>
+        <% @errors.each do |error| %>
+            <p id="error"><%= error %></p>
+        <%end%><br />
+    <% end %>
+    <form action="/cameras" method="post">
+        
+        <label id="newtitle">Add a New Camera</label><br /><br />
+        <input type="hidden" name="camera[user_id]" value="<%= current_user.id %>">
+
+        <label for="newformlabel">Nickname:</label>
+        <input id="newformlabel" type="text" name="camera[nickname]"><br /><br />
+
+        <label for="newformlabel">Make:</label>
+        <input id="newformlabel" type="text" name="camera[make]"><br /><br />
+
+        <label for="newformlabel">Model:</label>
+        <input id="newformlabel" type="text" name="camera[model]"><br /><br />
+        
+        <div id="selectcam">
+            <input id="newbutton" type="submit" value="Add Camera">
+        </div>
+
+    </form>
+</div>

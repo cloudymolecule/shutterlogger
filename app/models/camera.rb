@@ -4,4 +4,8 @@ class Camera < ActiveRecord::Base
     has_many :rolls
     has_many :photos, through: :camera_photos
     has_many :photos, through: :rolls
+
+    validates :make, presence: true
+    validates :model, presence: true
+
 end

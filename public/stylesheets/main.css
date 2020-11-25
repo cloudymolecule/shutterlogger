@@ -34,6 +34,19 @@
     padding: 10px 100px 50px 100px;
   }
 
+  div#newform {
+    margin: auto;
+    width: 30%;
+    height: auto;
+    padding: 10px;
+    text-align: end;
+    background-color:rgb(255, 215, 182);
+    float: none;
+    padding:10px;
+    border:2px solid rgb(211, 148, 92);
+    padding: 20px 10px 20px 10px;
+  }
+
   div#show {
     margin: auto;
     width: 35%;
@@ -109,4 +122,32 @@
     color: rgb(50, 31, 0);
     background-color: rgb(255, 140, 0);
     text-decoration: transparent;
+  }
+
+  label#newtitle {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  p#error {
+    display: block;
+    text-align: center;
+  }
+
+  div#radio {
+    text-align: left;
+  }
+
+  div#selectcam {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  input[type="radio"] {  
+    margin-right: 30px;
+  }
+
+  textarea {
+    resize: none;
   }
