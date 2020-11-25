@@ -1,1 +1,44 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<div id="newform">
+    <% if @errors %>
+        <p id="error">Error/s when adding Film Roll:</p>
+        <% @errors.each do |error| %>
+            <p id="error"><%= error %></p>
+        <%end%><br />
+    <% end %>
+    <form action="/rolls" method="post">
+        
+        <label id="newtitle">Add a Film Roll</label><br /><br />
+        <input type="hidden" name="roll[user_id]" value="<%= current_user.id %>">
+
+        <div id="selectcam">
+            <p>Select Exposure Count:</p>
+            <label for="24">24</label>
+            <input type="radio" id="24" name="roll[exp_count]" value="24">
+
+            <label for="36">36</label>
+            <input type="radio" id="36" name="roll[exp_count]" value="36" checked>
+        </div><br /><br ?>
+
+        <label for="newformlabel">Brand:</label>
+        <input id="newformlabel" type="text" name="roll[brand]"><br /><br />
+
+        <label for="newformlabel">Iso:</label>
+        <input id="newformlabel" type="text" name="roll[iso]"><br /><br />
+
+        <label for="newformlabel">Comments:</label>
+        <input id="newformlabel" type="text" name="roll[comments]"><br /><br />
+
+        <div id="selectcam">
+            <p>Select Camera where Film Roll is being loaded:</p>
+        </div>
+        <% current_user.cameras.all.each do |camera| %>
+            <div id="radio">
+                <input type="radio" name="roll[camera_id]" id="<%= camera.id %>" value="<%= camera.id %>"><%= " #{camera.make} / Model: #{camera.model}"%><br>
+            </div>
+        <% end %><br>
+        
+        <div id="selectcam">
+            <input id="newbutton" type="submit" value="Add Film Roll">
+        </div>
+    </form>
+</div>
