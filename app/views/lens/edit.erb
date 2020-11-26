@@ -1,1 +1,42 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<div id="newform">
+    <% if @errors %>
+        <p id="error">Error/s when adding lens:</p>
+        <% @errors.each do |error| %>
+            <p id="error"><%= error %></p>
+        <%end%><br />
+    <% end %>
+    <form action="/lens" method="post">
+        
+        <label id="newtitle">Add a New Lens</label><br /><br />
+        <input type="hidden" name="len[user_id]" value="<%= current_user.id %>">
+
+        <label for="newformlabel">Make:</label>
+        <input id="newformlabel" type="text" name="len[make]"><br /><br />
+
+        <label for="newformlabel">Model:</label>
+        <input id="newformlabel" type="text" name="len[model]"><br /><br />
+
+        <label for="newformlabel">Focal Range:</label>
+        <input id="newformlabel" type="text" name="len[focal_range]"><br /><br />
+
+        <label for="newformlabel">Min. Aperture:</label>
+        <input id="newformlabel" type="text" name="len[min_aperture]"><br /><br />
+
+        <label for="newformlabel">Max. Aperture:</label>
+        <input id="newformlabel" type="text" name="len[max_aperture]"><br /><br />
+
+        <div id="selectcam">
+            <p>Select Camera:</p>
+        </div>
+        <% current_user.cameras.all.each do |camera| %>
+            <div id="radio">
+                <input type="radio" name="len[camera_id]" id="<%= camera.id %>" value="<%= camera.id %>"><%= " #{camera.make} / Model: #{camera.model}"%><br>
+            </div>
+        <% end %><br>
+        
+        <div id="selectcam">
+            <input id="newbutton" type="submit" value="Add Lens">
+        </div>
+    </form>
+</div>
+

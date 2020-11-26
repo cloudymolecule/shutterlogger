@@ -38,11 +38,25 @@ class CamerasController < ApplicationController
   end
 
   get "/cameras/:id/edit" do
+    @camera = Camera.find_by(id: params[:id])
     erb :"/cameras/edit"
   end
 
   patch "/cameras/:id" do
-    redirect to "/cameras/:id"
+    camera = Camera.find_by(id: params[:id])
+    camera.update(
+      nickname: params[:camera][:nickname],
+      make: params[:camera][:make],
+      model: params[:camera][:model],
+      user_id: params[:camera][:user_id],
+      updated_at: Time.now
+    )
+    if camera.save
+      redirect to "/cameras/#{camera.id}"
+    else
+      @errors = camera.errors.full_messages
+      erb :"/cameras/new"
+    end
   end
 
   delete "/cameras/:id/delete" do

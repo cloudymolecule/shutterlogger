@@ -151,3 +151,7 @@
   textarea {
     resize: none;
   }
+
+  a#showmenu {
+    padding: 15px;
+  }

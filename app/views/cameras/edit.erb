@@ -1,1 +1,29 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<div id="newform">
+    <% if @errors %>
+        <p id="error">Error/s when editing camera:</p>
+        <% @errors.each do |error| %>
+            <p id="error"><%= error %></p>
+        <%end%><br />
+    <% end %>
+    <form action="/cameras/<%= @camera.id %>" method="post">
+        
+        <input type="hidden" name="_method" value="patch">  
+        
+        <label id="newtitle">Edit your <%= " #{@camera.make} - #{@camera.model}" %></label><br /><br />
+        <input type="hidden" name="camera[user_id]" value="<%= current_user.id %>">
+
+        <label for="newformlabel">Nickname:</label>
+        <input id="newformlabel" type="text" name="camera[nickname]" value="<%= @camera.nickname %>"><br /><br />
+
+        <label for="newformlabel">Make:</label>
+        <input id="newformlabel" type="text" name="camera[make]" value="<%= @camera.make %>"><br /><br />
+
+        <label for="newformlabel">Model:</label>
+        <input id="newformlabel" type="text" name="camera[model]" value="<%= @camera.nickname %>"><br /><br />
+        
+        <div id="selectcam">
+            <input id="newbutton" type="submit" value="Edit Camera">
+        </div>
+
+    </form>
+</div>
