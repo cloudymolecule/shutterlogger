@@ -11,6 +11,7 @@
         
         <label id="newtitle">Edit your Photo</label><br /><br />
         <input type="hidden" name="photo[user_id]" value="<%= current_user.id %>">
+        <input type="hidden" name="photo[roll_id]" value="<%= @photo.roll.id %>">
 
         <div id="selectcam">
             <p>Select Rating:</p>
@@ -31,30 +32,30 @@
         </div><br /><br ?>
 
         <label for="newformlabel">Name:</label>
-        <input id="newformlabel" type="text" name="photo[name]"><br /><br />
+        <input id="newformlabel" type="text" name="photo[name]" value="<%= @photo.name %>"><br /><br />
 
         <label for="newformlabel">Description:</label>
         <textarea id="newformlabel" type="text" name="photo[description]" rows="8" cols="50">
-        
+        <%= @photo.description %>
         </textarea><br /><br />
 
         <label for="newformlabel">Shutter Speed:</label>
-        <input id="newformlabel" type="text" name="photo[shutter]"><br /><br />
+        <input id="newformlabel" type="text" name="photo[shutter]" value="<%= @photo.shutter %>"><br /><br />
 
         <label for="newformlabel">Aperture:</label>
-        <input id="newformlabel" type="text" name="photo[aperture]"><br /><br />
+        <input id="newformlabel" type="text" name="photo[aperture]" value="<%= @photo.aperture %>"><br /><br />
 
         <label for="newformlabel">Focal Length:</label>
-        <input id="newformlabel" type="text" name="photo[focal_length]"><br /><br />
+        <input id="newformlabel" type="text" name="photo[focal_length]" value="<%= @photo.focal_length %>"><br /><br />
 
         <label for="newformlabel">Date:</label>
-        <input id="newformlabel" type="text" name="photo[date]"><br /><br />
+        <input id="newformlabel" type="text" name="photo[date]" value="<%= @photo.date %>"><br /><br />
 
         <label for="newformlabel">Time:</label>
-        <input id="newformlabel" type="text" name="photo[time]"><br /><br />
+        <input id="newformlabel" type="text" name="photo[time]" value="<%= @photo.time %>"><br /><br />
 
         <label for="newformlabel">Location:</label>
-        <input id="newformlabel" type="text" name="photo[location]"><br /><br />
+        <input id="newformlabel" type="text" name="photo[location]" value="<%= @photo.location %>"><br /><br />
 
 
         <div id="selectcam">
@@ -67,14 +68,12 @@
         <% end %><br>
 
         <div id="selectcam">
-            <p>Select Roll Used:</p>
+            <p>Photo captured on:</p>
+            <p><%= "#{@photo.roll.brand} - #{@photo.roll.comments}" %></p>
+            <p>Film Roll cannot be edited</p><br />
         </div>
-        <% current_user.rolls.all.each do |roll| %>
-            <div id="radio">
-                <input type="radio" name="photo[roll_id]" id="<%= roll.id %>" value="<%= roll.id %>"<% if @photo.roll_id == roll.id %>checked<% end %>><%= " #{roll.brand} / Comments: #{roll.comments}"%><br>
-            </div>
-        <% end %><br>
-
+        
+        
         <div id="selectcam">
             <p>Select Lens Shot With:</p>
         </div>
