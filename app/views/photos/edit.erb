@@ -1,1 +1,96 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<div id="newform">
+    <% if @errors %>
+        <p id="error">Error/s when editing photo:</p>
+        <% @errors.each do |error| %>
+            <p id="error"><%= error %></p>
+        <%end%><br />
+    <% end %>
+    <form action="/photos/<%= @photo.id %>" method="post">
+        
+        <input type="hidden" name="_method" value="patch">  
+        
+        <label id="newtitle">Edit your Photo</label><br /><br />
+        <input type="hidden" name="photo[user_id]" value="<%= current_user.id %>">
+
+        <div id="selectcam">
+            <p>Select Rating:</p>
+            <label for="1">1</label>
+            <input type="radio" id="1" name="photo[rating]" value="1" <% if @photo.rating == 1 %>checked<% end %>>
+
+            <label for="2">2</label>
+            <input type="radio" id="2" name="photo[rating]" value="2" <% if @photo.rating == 2 %>checked<% end %>>
+
+            <label for="3">3</label>
+            <input type="radio" id="3" name="photo[rating]" value="3" <% if @photo.rating == 3 %>checked<% end %>>
+
+            <label for="4">4</label>
+            <input type="radio" id="4" name="photo[rating]" value="4" <% if @photo.rating == 4 %>checked<% end %>>
+            
+            <label for="5">5</label>
+            <input type="radio" id="5" name="photo[rating]" value="5" <% if @photo.rating == 5 %>checked<% end %>>
+        </div><br /><br ?>
+
+        <label for="newformlabel">Name:</label>
+        <input id="newformlabel" type="text" name="photo[name]"><br /><br />
+
+        <label for="newformlabel">Description:</label>
+        <textarea id="newformlabel" type="text" name="photo[description]" rows="8" cols="50">
+        
+        </textarea><br /><br />
+
+        <label for="newformlabel">Shutter Speed:</label>
+        <input id="newformlabel" type="text" name="photo[shutter]"><br /><br />
+
+        <label for="newformlabel">Aperture:</label>
+        <input id="newformlabel" type="text" name="photo[aperture]"><br /><br />
+
+        <label for="newformlabel">Focal Length:</label>
+        <input id="newformlabel" type="text" name="photo[focal_length]"><br /><br />
+
+        <label for="newformlabel">Date:</label>
+        <input id="newformlabel" type="text" name="photo[date]"><br /><br />
+
+        <label for="newformlabel">Time:</label>
+        <input id="newformlabel" type="text" name="photo[time]"><br /><br />
+
+        <label for="newformlabel">Location:</label>
+        <input id="newformlabel" type="text" name="photo[location]"><br /><br />
+
+
+        <div id="selectcam">
+            <p>Select Camera Shot With:</p>
+        </div>
+        <% current_user.cameras.all.each do |camera| %>
+            <div id="radio">
+                <input type="radio" name="photo[camera_id]" id="<%= camera.id %>" value="<%= camera.id %>" <% if @photo.camera_id == camera.id %>checked<% end %>><%= " #{camera.make} / Model: #{camera.model}"%><br>
+            </div>
+        <% end %><br>
+
+        <div id="selectcam">
+            <p>Select Roll Used:</p>
+        </div>
+        <% current_user.rolls.all.each do |roll| %>
+            <div id="radio">
+                <input type="radio" name="photo[roll_id]" id="<%= roll.id %>" value="<%= roll.id %>"<% if @photo.roll_id == roll.id %>checked<% end %>><%= " #{roll.brand} / Comments: #{roll.comments}"%><br>
+            </div>
+        <% end %><br>
+
+        <div id="selectcam">
+            <p>Select Lens Shot With:</p>
+        </div>
+        <% current_user.lens.all.each do |len| %>
+            <div id="radio">
+                <input type="radio" name="photo[len_id]" id="<%= len.id %>" value="<%= len.id %>" <% if @photo.len_id == len.id %>checked<% end %>><%= " #{len.make} / Model: #{len.model} (belongs to: #{len.camera.make}/#{len.camera.model})"%><br>
+            </div>
+        <% end %><br>
+        
+        <div id="selectcam">
+            <input id="newbutton" type="submit" value="Edit Photo">
+        </div>
+    </form>
+</div>
+
+
+
+
+

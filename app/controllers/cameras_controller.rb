@@ -55,7 +55,8 @@ class CamerasController < ApplicationController
       redirect to "/cameras/#{camera.id}"
     else
       @errors = camera.errors.full_messages
-      erb :"/cameras/new"
+      @camera = camera
+      erb :"/cameras/edit"
     end
   end
 

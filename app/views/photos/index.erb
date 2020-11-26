@@ -3,5 +3,6 @@
     <% @photos.each do |photo| %>
         <a id="showlinks" href="/photos/<%= photo.id %>"><%= photo.name %><%= " - #{photo.rating} star rating" %> </a><br /><br />
     <% end %><br /><br />
-    <a href="/photos/new" id="new">Add a New Photo Record</a>
+    <a href="/photos/new" id="showmenu">Add a New Photo Record</a>
+    <a href="/users/<%=current_user.id%>" id="showmenu">Home</a>
 </div><br /><br />
