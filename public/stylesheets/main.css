@@ -206,3 +206,42 @@
     background-color: rgb(255, 140, 0);
     text-decoration: transparent;
   }
+
+
+
+
+
+
+
+
+  input#logsign {
+    font-size: 1em;
+    padding: 15px;
+    background: none;
+    border: none;
+	  cursor: pointer;
+  }
+
+  input#logsign:link {
+    color: rgb(142, 66, 0);
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
+  input#logsign:visited {
+    color: rgb(101, 52, 9);
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
+  input#logsign:hover {
+    color: rgb(255, 140, 0);
+    background-color: rgb(65, 36, 0);
+    text-decoration: none;
+  }
+  
+  input#logsign:active {
+    color: rgb(50, 31, 0);
+    background-color: rgb(255, 140, 0);
+    text-decoration: transparent;
+  }
