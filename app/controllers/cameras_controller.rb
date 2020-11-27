@@ -33,8 +33,11 @@ class CamerasController < ApplicationController
   end
 
   get "/cameras/:id" do
-    @camera = Camera.find_by(id: params[:id])
-    erb :"/cameras/show"
+    if @camera = Camera.find_by(id: params[:id])
+      erb :"/cameras/show"
+    else
+      redirect to "/cameras"
+    end
   end
 
   get "/cameras/:id/edit" do
