@@ -63,6 +63,9 @@ class LensController < ApplicationController
   end
 
   delete "/lens/:id/delete" do
+    len = Len.find_by(id: params[:id])
+    flash[:message] = "#{len.make} - #{len.model} | deleted successfully."
+    len.destroy
     redirect to "/lens"
   end
   

@@ -82,6 +82,9 @@ class RollsController < ApplicationController
   end
 
   delete "/rolls/:id/delete" do
+    roll = Roll.find_by(id: params[:id])
+    flash[:message] = "#{roll.brand} - #{roll.comments} | deleted successfully."
+    roll.destroy
     redirect to "/rolls"
   end
 
