@@ -12,7 +12,6 @@ class PhotosController < ApplicationController
   end
 
   post "/photos" do
-    redirect_if_not_logged_in
     if params[:photo][:description] == ""
       params[:photo][:description] = "No description"
     end
@@ -84,7 +83,11 @@ class PhotosController < ApplicationController
   get "/photos/:id" do
     redirect_if_not_logged_in
     if @photo = Photo.find_by(id: params[:id])
-      erb :"/photos/show"
+      if @photo.user_id == session[:user_id]
+        erb :"/photos/show"
+      else
+        not_authorized
+      end
     else
       redirect to "/photos"
     end
@@ -93,11 +96,14 @@ class PhotosController < ApplicationController
   get "/photos/:id/edit" do
     redirect_if_not_logged_in
     @photo = Photo.find_by(id: params[:id])
-    erb :"/photos/edit"
+    if @photo.user_id == session[:user_id]
+      erb :"/photos/edit"
+    else
+      not_authorized
+    end
   end
 
   patch "/photos/:id" do
-    redirect_if_not_logged_in
     @photo = Photo.find_by(id: params[:id])
     if params[:photo][:description] == ""
       params[:photo][:description] = "No description"
@@ -167,7 +173,6 @@ class PhotosController < ApplicationController
   end
 
   delete "/photos/:id" do
-    redirect_if_not_logged_in
     photo = Photo.find_by(id: params[:id])
     flash[:message] = "'#{photo.name}' | deleted successfully."
     photo.destroy

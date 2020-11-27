@@ -12,7 +12,6 @@ class CamerasController < ApplicationController
   end
 
   post "/cameras" do
-    redirect_if_not_logged_in
     camera = Camera.new(
       nickname: params[:camera][:nickname],
       make: params[:camera][:make],
@@ -54,37 +53,27 @@ class CamerasController < ApplicationController
   end
 
   patch "/cameras/:id" do
-    redirect_if_not_logged_in
     @camera = Camera.find_by(id: params[:id])
-    if @camera.user_id == session[:user_id]
-      @camera.update(
-        nickname: params[:camera][:nickname],
-        make: params[:camera][:make],
-        model: params[:camera][:model],
-        user_id: params[:camera][:user_id],
-        updated_at: Time.now
-      )
-      if @camera.save
-        redirect to "/cameras/#{@camera.id}"
-      else
-        @errors = camera.errors.full_messages
-        erb :"/cameras/edit"
-      end
+    @camera.update(
+      nickname: params[:camera][:nickname],
+      make: params[:camera][:make],
+      model: params[:camera][:model],
+      user_id: params[:camera][:user_id],
+      updated_at: Time.now
+    )
+    if @camera.save
+      redirect to "/cameras/#{@camera.id}"
     else
-      not_authorized
+      @errors = camera.errors.full_messages
+      erb :"/cameras/edit"
     end
   end
 
   delete "/cameras/:id" do
-    redirect_if_not_logged_in
     @camera = Camera.find_by(id: params[:id])
-    if @camera.user_id == session[:user_id]
-      flash[:message] = "#{@camera.make} - #{@camera.model} | deleted successfully."
-      @camera.destroy
-      redirect to "/cameras"
-    else
-      not_authorized
-    end
+    flash[:message] = "#{@camera.make} - #{@camera.model} | deleted successfully."
+    @camera.destroy
+    redirect to "/cameras"
   end
   
 end

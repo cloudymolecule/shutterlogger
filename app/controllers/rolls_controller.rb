@@ -12,7 +12,6 @@ class RollsController < ApplicationController
   end
 
   post "/rolls" do
-    redirect_if_not_logged_in
     roll = Roll.new(
       exp_count: params[:roll][:exp_count],
       brand: params[:roll][:brand],
@@ -45,7 +44,11 @@ class RollsController < ApplicationController
   get "/rolls/:id" do
     redirect_if_not_logged_in
     if @roll = Roll.find_by(id: params[:id])
-      erb :"/rolls/show"
+      if @roll.user_id == session[:user_id]
+        erb :"/rolls/show"
+      else
+        not_authorized
+      end
     else
       redirect to "/rolls"
     end
@@ -54,7 +57,11 @@ class RollsController < ApplicationController
   get "/rolls/:id/edit" do
     redirect_if_not_logged_in
     @roll = Roll.find_by(id: params[:id])
-    erb :"/rolls/edit"
+    if @roll.user_id == session[:user_id] #doing now
+      erb :"/rolls/edit"
+    else
+      not_authorized
+    end
   end
 
   patch "/rolls/:id" do
