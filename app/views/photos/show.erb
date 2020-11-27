@@ -7,7 +7,12 @@
     <p><%= "Focal length(mm): #{@photo.focal_length}" %></p>
     <p><%= "Date and time taken: #{@photo.date}, #{@photo.time}" %></p>
     <p><%= "Location: #{@photo.location}" %></p><br />
-    <a href="/photos/<%= @photo.id %>/edit" id="showmenu">Edit Photo</a>
-    <a href="/photos/<%= @photo.id %>/delete" id="showmenu">Delete Photo</a>
-    <a href="/photos" id="showmenu">Back to Listing</a>
+    
+    <form id="showmenu" method="POST" action="/photos/<%= @photo.id %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <a href="/photos/<%= @photo.id %>/edit" id="showmenu">Edit Photo</a>
+        <input id="delsubmit" type="submit" value="Delete Photo">
+        <a href="/photos" id="showmenu">Back to Listing</a>
+    </form>
+
 </div><br /><br />

@@ -4,7 +4,12 @@
     <p><%= "Focal Range: #{@len.focal_range}" %></p><br />
     <p><%= "Minimum Aperture: F/#{@len.min_aperture}" %></p>
     <p><%= "Maximum Aperture: F/#{@len.max_aperture}" %></p><br />
-    <a href="/lens/<%= @len.id %>/edit" id="showmenu">Edit Lens</a>
-    <a href="/lens/<%= @len.id %>/delete" id="showmenu">Delete Lens</a>
-    <a href="/lens" id="showmenu">Back to Listing</a>
+    
+    <form id="showmenu" method="POST" action="/lens/<%= @len.id %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <a href="/lens/<%= @len.id %>/edit" id="showmenu">Edit Lens</a>
+        <input id="delsubmit" type="submit" value="Delete Lens">
+        <a href="/lens" id="showmenu">Back to Listing</a>
+    </form>
+
 </div><br /><br />

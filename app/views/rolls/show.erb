@@ -3,7 +3,12 @@
     <p><%= "Comments: #{@roll.comments}" %></p>
     <p><%= "ISO: #{@roll.iso}" %></p><br />
     <p><%= "Exposures remaining: #{@roll.exp_count}" %></p>
-    <a href="/rolls/<%= @roll.id %>/edit" id="showmenu">Edit Roll</a>
-    <a href="/rolls/<%= @roll.id %>/delete" id="showmenu">Delete Roll</a>
-    <a href="/rolls" id="showmenu">Back to Listing</a>
+    
+    <form id="showmenu" method="POST" action="/rolls/<%= @roll.id %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <a href="/rolls/<%= @roll.id %>/edit" id="showmenu">Edit Roll</a>
+        <input id="delsubmit" type="submit" value="Delete Roll">
+        <a href="/rolls" id="showmenu">Back to Listing</a>
+    </form>
+
 </div><br /><br />
