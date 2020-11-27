@@ -3,7 +3,9 @@
     <p><%= "Make: #{@len.make}" %></p>
     <p><%= "Focal Range: #{@len.focal_range}" %></p><br />
     <p><%= "Minimum Aperture: F/#{@len.min_aperture}" %></p>
-    <p><%= "Maximum Aperture: F/#{@len.max_aperture}" %></p><br />
+    <p><%= "Maximum Aperture: F/#{@len.max_aperture}" %></p><br /><br />
+    <p><%= created_date_time(@len)[0] %></p>
+    <p><%= updated_date_time(@len) %></p><br /><br />
     
     <form id="showmenu" method="POST" action="/lens/<%= @len.id %>">
         <input type="hidden" name="_method" value="DELETE">

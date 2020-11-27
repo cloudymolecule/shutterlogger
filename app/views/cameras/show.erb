@@ -3,7 +3,8 @@
     <p><%= "Make: #{@camera.make}" %></p>
     <p><%= "Model: #{@camera.model}" %></p><br /><br />
     <p><%= "#{loaded}" %></p><br /><br />
-    <p><%= created_date_time(@camera)[0] %></p><br /><br />
+    <p><%= created_date_time(@camera)[0] %></p>
+    <p><%= updated_date_time(@camera) %></p><br /><br />
     
     <form id="showmenu" method="POST" action="/cameras/<%= @camera.id %>">
         <input type="hidden" name="_method" value="DELETE">
