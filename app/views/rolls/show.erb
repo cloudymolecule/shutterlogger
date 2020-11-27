@@ -3,4 +3,7 @@
     <p><%= "Comments: #{@roll.comments}" %></p>
     <p><%= "ISO: #{@roll.iso}" %></p><br />
     <p><%= "Exposures remaining: #{@roll.exp_count}" %></p>
+    <a href="/rolls/<%= @roll.id %>/edit" id="showmenu">Edit Roll</a>
+    <a href="/rolls/<%= @roll.id %>/delete" id="showmenu">Delete Roll</a>
+    <a href="/rolls" id="showmenu">Back to Listing</a>
 </div><br /><br />

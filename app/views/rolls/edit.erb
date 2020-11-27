@@ -1,1 +1,46 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<div id="newform">
+    <% if @errors %>
+        <p id="error">Error/s when editing Film Roll:</p>
+        <% @errors.each do |error| %>
+            <p id="error"><%= error %></p>
+        <%end%><br />
+    <% end %>
+    <form action="/rolls/<%= @roll.id %>" method="post">
+        
+        <input type="hidden" name="_method" value="patch">  
+        
+        <label id="newtitle">Edit your Film Roll</label><br /><br />
+        <input type="hidden" name="roll[user_id]" value="<%= current_user.id %>">
+
+        <div id="selectcam">
+            <p>Select Exposure Count:</p>
+            <label for="24">24</label>
+            <input type="radio" id="24" name="roll[exp_count]" value="24" <% if @roll.exp_count == 24 %>checked<% end %>>
+
+            <label for="36">36</label>
+            <input type="radio" id="36" name="roll[exp_count]" value="36" <% if @roll.exp_count == 36 %>checked<% end %>>
+        </div><br /><br ?>
+
+        <label for="newformlabel">Brand:</label>
+        <input id="newformlabel" type="text" name="roll[brand]" value="<%= @roll.brand %>"><br /><br />
+
+        <label for="newformlabel">Iso:</label>
+        <input id="newformlabel" type="text" name="roll[iso]" value="<%= @roll.iso %>"><br /><br />
+
+        <label for="newformlabel">Comments:</label>
+        <input id="newformlabel" type="text" name="roll[comments]" value="<%= @roll.comments %>"><br /><br />
+
+        <div id="selectcam">
+            <p>Select Camera where Film Roll is being loaded:</p>
+        </div>
+        <% current_user.cameras.all.each do |camera| %>
+            <div id="radio">
+                <input type="radio" name="roll[camera_id]" id="<%= camera.id %>" value="<%= camera.id %>" <% if @roll.camera_id == camera.id %>checked<% end %>><%= " #{camera.make} / Model: #{camera.model}"%><br>
+            </div>
+        <% end %><br>
+        
+        <div id="selectcam">
+            <input id="newbutton" type="submit" value="Edit Film Roll">
+        </div>
+    </form>
+</div>
