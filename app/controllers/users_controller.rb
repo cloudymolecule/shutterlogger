@@ -5,10 +5,6 @@ class UsersController < ApplicationController
     erb :"/users/index"
   end
 
-  # get "/users/new" do
-  #   erb :"/users/new"
-  # end
-
   post "/signup" do
     user = User.new(params[:user])
     if user.save
@@ -32,28 +28,34 @@ class UsersController < ApplicationController
   end
 
   get "/logout" do
+    redirect_if_not_logged_in
     session.clear
     redirect to "/login"
   end
 
   # post "/users" do
+  #   redirect_if_not_logged_in
   #   redirect to "/users"
   # end
 
   get "/users/:id" do
+    redirect_if_not_logged_in
     @user = User.find_by(id: params[:id])
     erb :"/users/show"
   end
 
   get "/users/:id/edit" do
+    redirect_if_not_logged_in
     erb :"/users/edit"
   end
 
   patch "/users/:id" do
+    redirect_if_not_logged_in
     redirect to "/users/:id"
   end
 
   delete "/users/:id/delete" do
+    redirect_if_not_logged_in
     redirect to "/users"
   end
 

@@ -2,15 +2,18 @@ class LensController < ApplicationController
 
 
   get "/lens" do
+    redirect_if_not_logged_in
     @lens = current_user.lens
     erb :"/lens/index"
   end
   
   get "/lens/new" do
+    redirect_if_not_logged_in
     erb :"/lens/new"
   end
 
   post "/lens" do
+    redirect_if_not_logged_in
     len = Len.new(
       make: params[:len][:make],
       model: params[:len][:model],
@@ -32,6 +35,7 @@ class LensController < ApplicationController
   end
 
   get "/lens/:id" do
+    redirect_if_not_logged_in
     if @len = Len.find_by(id: params[:id])
       erb :"/lens/show"
     else
@@ -40,11 +44,13 @@ class LensController < ApplicationController
   end
 
   get "/lens/:id/edit" do
+    redirect_if_not_logged_in
     @len = Len.find_by(id: params[:id])
     erb :"/lens/edit"
   end
 
   patch "/lens/:id" do
+    redirect_if_not_logged_in
     len = Len.find_by(id: params[:id])
     len.update(
       make: params[:len][:make],
@@ -66,6 +72,7 @@ class LensController < ApplicationController
   end
 
   delete "/lens/:id" do
+    redirect_if_not_logged_in
     len = Len.find_by(id: params[:id])
     flash[:message] = "#{len.make} - #{len.model} | deleted successfully."
     len.destroy

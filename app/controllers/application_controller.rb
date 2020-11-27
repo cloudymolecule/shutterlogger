@@ -33,6 +33,16 @@ class ApplicationController < Sinatra::Base
       User.find_by(id: session[:user_id])
     end
 
+    def redirect_if_not_logged_in
+      flash[:message] = "Please log in to access site!"
+      redirect to '/login' if !logged_in?
+    end
+
+    def not_authorized
+      flash[:message] = "Forbidden, can't access content!"
+      redirect to "/users/show"
+    end
+
     def loaded
       if @camera.loaded == true
         return "The camera is currently LOADED with film."

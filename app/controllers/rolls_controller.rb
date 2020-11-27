@@ -1,15 +1,18 @@
 class RollsController < ApplicationController
 
   get "/rolls" do
+    redirect_if_not_logged_in
     @rolls = current_user.rolls
     erb :"/rolls/index"
   end
 
   get "/rolls/new" do
+    redirect_if_not_logged_in
     erb :"/rolls/new"
   end
 
   post "/rolls" do
+    redirect_if_not_logged_in
     roll = Roll.new(
       exp_count: params[:roll][:exp_count],
       brand: params[:roll][:brand],
@@ -40,6 +43,7 @@ class RollsController < ApplicationController
   end
 
   get "/rolls/:id" do
+    redirect_if_not_logged_in
     if @roll = Roll.find_by(id: params[:id])
       erb :"/rolls/show"
     else
@@ -48,11 +52,13 @@ class RollsController < ApplicationController
   end
 
   get "/rolls/:id/edit" do
+    redirect_if_not_logged_in
     @roll = Roll.find_by(id: params[:id])
     erb :"/rolls/edit"
   end
 
   patch "/rolls/:id" do
+    redirect_if_not_logged_in
     roll = Roll.find_by(id: params[:id])
     roll.update(
       exp_count: params[:roll][:exp_count],
@@ -85,6 +91,7 @@ class RollsController < ApplicationController
   end
 
   delete "/rolls/:id" do
+    redirect_if_not_logged_in
     roll = Roll.find_by(id: params[:id])
     flash[:message] = "#{roll.brand} - #{roll.comments} | deleted successfully."
     roll.destroy
