@@ -2,7 +2,8 @@
     <h3 id="log"><%= "Camera nickname: '#{@camera.nickname}'" %></h3><br />
     <p><%= "Make: #{@camera.make}" %></p>
     <p><%= "Model: #{@camera.model}" %></p><br /><br />
-    <p><%= "#{loaded}" %></p><br />
+    <p><%= "#{loaded}" %></p><br /><br />
+    <p><%= created_date_time(@camera)[0] %></p><br /><br />
     
     <form id="showmenu" method="POST" action="/cameras/<%= @camera.id %>">
         <input type="hidden" name="_method" value="DELETE">
