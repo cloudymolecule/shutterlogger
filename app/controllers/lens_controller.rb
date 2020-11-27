@@ -1,6 +1,5 @@
 class LensController < ApplicationController
 
-
   get "/lens" do
     redirect_if_not_logged_in
     @lens = current_user.lens

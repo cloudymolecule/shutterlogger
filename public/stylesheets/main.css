@@ -23,7 +23,7 @@
 
   div#center {
     margin: auto;
-    width: 20%;
+    width: fit-content;
     height: auto;
     padding: 10px;
     text-align: center;
@@ -36,7 +36,7 @@
 
   div#newform {
     margin: auto;
-    width: 30%;
+    width: fit-content;
     height: auto;
     padding: 10px;
     text-align: end;
@@ -49,7 +49,20 @@
 
   div#show {
     margin: auto;
-    width: 35%;
+    width: fit-content;
+    height: auto;
+    padding: 10px;
+    text-align: center;
+    background-color:rgb(255, 215, 182);
+    float: none;
+    padding:10px;
+    border:2px solid rgb(211, 148, 92);
+    padding: 10px 100px 50px 100px;
+  }
+
+  div#show2 {
+    margin: auto;
+    width: 45%;
     height: auto;
     padding: 10px;
     text-align: center;
@@ -158,7 +171,7 @@
 
   form#showmenu {
     position: relative;
-    left: -6%;
+    left: -18%;
     padding: 15px;
   }
 

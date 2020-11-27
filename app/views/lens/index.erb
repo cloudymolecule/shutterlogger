@@ -4,7 +4,7 @@
     <% end %>
     <h3 id="log">Lenses</h3><br />
     <% @lens.each do |len| %>
-        <a id="showlinks" href="/lens/<%= len.id %>"><%= len.make %><%= " #{len.model}" %> </a><br /><br />
+        <a id="showmenu" href="/lens/<%= len.id %>"><%= len.make %><%= " #{len.model}" %> </a><br /><br />
     <% end %><br /><br />
     <a href="/users/<%=current_user.id%>" id="showmenu">Home</a>
     <a href="/lens/new" id="showmenu">Add a New Lens</a>

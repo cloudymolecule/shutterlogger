@@ -1,10 +1,5 @@
 class UsersController < ApplicationController
 
-  
-  get "/users" do
-    erb :"/users/index"
-  end
-
   post "/signup" do
     user = User.new(params[:user])
     if user.save
@@ -17,13 +12,18 @@ class UsersController < ApplicationController
   end
 
   post "/login" do
-    !params[:user][:username].blank? ? user = User.find_by(username: params[:user][:username]) : user = User.find_by(email: params[:user][:email])
-    if user && user.authenticate(params[:user][:password])
-      session[:user_id] = user.id
-      redirect to "/users/#{user.id}"
+    if !logged_in?
+      !params[:user][:username].blank? ? user = User.find_by(username: params[:user][:username]) : user = User.find_by(email: params[:user][:email])
+      if user && user.authenticate(params[:user][:password])
+        session[:user_id] = user.id
+        redirect to "/users/#{user.id}"
+      else
+        flash[:message] = "Incorrect, please try again."
+        redirect to "/login"
+      end
     else
-      flash[:message] = "Incorrect, please try again."
-      redirect to "/login"
+      @user = User.find_by(id: params[:id])
+      erb :"/users/show"
     end
   end
 
