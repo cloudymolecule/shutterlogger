@@ -155,3 +155,41 @@
   a#showmenu {
     padding: 15px;
   }
+
+  form#showmenu {
+    position: relative;
+    left: -6%;
+    padding: 15px;
+  }
+
+  input#delsubmit {
+    font-size: 1em;
+    padding: 15px;
+    background: none;
+    border: none;
+	  cursor: pointer;
+  }
+
+  input#delsubmit:link {
+    color: rgb(142, 66, 0);
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
+  input#delsubmit:visited {
+    color: rgb(101, 52, 9);
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
+  input#delsubmit:hover {
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 0, 0);
+    text-decoration: none;
+  }
+  
+  input#delsubmit:active {
+    color: rgb(50, 31, 0);
+    background-color: rgb(255, 140, 0);
+    text-decoration: transparent;
+  }

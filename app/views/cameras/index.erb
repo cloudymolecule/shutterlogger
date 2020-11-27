@@ -1,4 +1,7 @@
 <div id="show">
+    <%if flash[:message] %>
+    <p><%= flash[:message] %></p>
+    <% end %>
     <h3 id="log">Cameras</h3><br />
     <% @cameras.each do |camera| %>
         <a id="showlinks" href="/cameras/<%= camera.id %>"><%= "#{camera.make} - #{camera.model}" %> </a><br /><br />

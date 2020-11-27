@@ -60,7 +60,7 @@ class CamerasController < ApplicationController
     end
   end
 
-  delete "/cameras/:id/delete" do
+  delete "/cameras/:id" do
     camera = Camera.find_by(id: params[:id])
     flash[:message] = "#{camera.make} - #{camera.model} | deleted successfully."
     camera.destroy

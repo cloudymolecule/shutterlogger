@@ -3,7 +3,13 @@
     <p><%= "Make: #{@camera.make}" %></p>
     <p><%= "Model: #{@camera.model}" %></p><br /><br />
     <p><%= "#{loaded}" %></p><br />
-    <a href="/cameras/<%= @camera.id %>/edit" id="showmenu">Edit Camera</a>
-    <a href="/cameras/<%= @camera.id %>/delete" id="showmenu">Delete Camera</a>
-    <a href="/cameras" id="showmenu">Back to Listing</a>
+    
+    <form id="showmenu" method="POST" action="/cameras/<%= @camera.id %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <a href="/cameras/<%= @camera.id %>/edit" id="showmenu">Edit Camera</a>
+        <input id="delsubmit" type="submit" value="Delete Camera">
+        <a href="/cameras" id="showmenu">Back to Listing</a>
+    </form>
+
+    
 </div><br /><br />
