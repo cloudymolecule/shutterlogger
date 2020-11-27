@@ -8,12 +8,7 @@ class CamerasController < ApplicationController
 
   get "/cameras/new" do
     redirect_if_not_logged_in
-    # if logged_in?
-    #   erb :"/cameras/new"
-    # else
-    #   redirect to "/login"
-    # end
-    
+    erb :"/cameras/new"
   end
 
   post "/cameras" do

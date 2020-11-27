@@ -36,11 +36,12 @@ class LensController < ApplicationController
 
   get "/lens/:id" do
     redirect_if_not_logged_in
-    if @len = Len.find_by(id: params[:id])
-      erb :"/lens/show"
-    else
-      redirect to "/lens"
-    end
+    
+      if @len = Len.find_by(id: params[:id])
+        erb :"/lens/show"
+      else
+        redirect to "/lens"
+      end
   end
 
   get "/lens/:id/edit" do
