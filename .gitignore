@@ -1,2 +1,2 @@
-db/seeds.rb
 .env
+.DS_Store
