@@ -32,8 +32,11 @@ class LensController < ApplicationController
   end
 
   get "/lens/:id" do
-    @len = Len.find_by(id: params[:id])
-    erb :"/lens/show"
+    if @len = Len.find_by(id: params[:id])
+      erb :"/lens/show"
+    else
+      redirect to "/lens"
+    end
   end
 
   get "/lens/:id/edit" do

@@ -1,4 +1,7 @@
 <div id="show">
+    <%if flash[:message] %>
+    <p><%= flash[:message] %></p>
+    <% end %>
     <h3 id="log">Rolls</h3><br />
     <% @rolls.each do |roll| %>
         <a id="showlinks" href="/rolls/<%= roll.id %>"><%= roll.brand %><%= " - #{roll.exp_count} exposures left" %></a><br /><br />

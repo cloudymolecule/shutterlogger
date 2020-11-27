@@ -1,4 +1,7 @@
 <div id="show">
+    <%if flash[:message] %>
+    <p><%= flash[:message] %></p>
+    <% end %>
     <h3 id="log">Photos</h3><br />
     <% @photos.each do |photo| %>
         <a id="showlinks" href="/photos/<%= photo.id %>"><%= photo.name %><%= " - #{photo.rating} star rating" %> </a><br /><br />

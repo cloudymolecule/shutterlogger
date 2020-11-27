@@ -1,4 +1,7 @@
 <div id="show">
+    <%if flash[:message] %>
+    <p><%= flash[:message] %></p>
+    <% end %>
     <h3 id="log">Lenses</h3><br />
     <% @lens.each do |len| %>
         <a id="showlinks" href="/lens/<%= len.id %>"><%= len.make %><%= " #{len.model}" %> </a><br /><br />

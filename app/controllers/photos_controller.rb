@@ -79,8 +79,11 @@ class PhotosController < ApplicationController
   end
 
   get "/photos/:id" do
-    @photo = Photo.find_by(id: params[:id])
-    erb :"/photos/show"
+    if @photo = Photo.find_by(id: params[:id])
+      erb :"/photos/show"
+    else
+      redirect to "/photos"
+    end
   end
 
   get "/photos/:id/edit" do
