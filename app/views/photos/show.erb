@@ -1,7 +1,10 @@
 <div id="show">
     <h3 id="log"><%= "Photo name: '#{@photo.name}'" %></h3><br />
     <p><%= "Rating: #{@photo.rating} stars" %></p>
+
+    <div id="description">
     <p><%= "Description: #{@photo.description}" %></p><br /><br />
+    </div>
     <p><%= "Shutter Speed(sec/s): #{@photo.shutter}" %></p>
     <p><%= "Aperture(f): #{@photo.aperture}" %></p>
     <p><%= "Focal length(mm): #{@photo.focal_length}" %></p>

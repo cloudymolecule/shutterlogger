@@ -170,6 +170,8 @@
   }
 
   form#showmenu {
+    margin: auto;
+    text-align: center;
     position: relative;
     
     padding: 15px;
@@ -237,4 +239,11 @@
     color: rgb(50, 31, 0);
     background-color: rgb(255, 140, 0);
     text-decoration: transparent;
+  }
+
+  div#description {
+    margin: auto;
+    text-align: center;
+    width: 80%;
+    max-width: initial;
   }
