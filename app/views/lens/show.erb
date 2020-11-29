@@ -10,7 +10,7 @@
     <form id="showmenu" method="POST" action="/lens/<%= @len.id %>">
         <input type="hidden" name="_method" value="DELETE">
         <a href="/lens/<%= @len.id %>/edit" id="showmenu">Edit Lens</a>
-        <input id="delsubmit" type="submit" value="Delete Lens">
+        <input id="delsubmit" type="submit" onclick="return confirm('Are you sure you want to delete this lens?');"value="Delete Lens">
         <a href="/lens" id="showmenu">Back to Listing</a>
     </form>
 
