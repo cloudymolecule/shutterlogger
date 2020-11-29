@@ -6,9 +6,11 @@
   </head>
   <body>
       <% if logged_in? %>
-        <a id="homelog" href="/users/<%= current_user.id %>">HOME</a>
-        <a id="homelog" href="/logout">LOG OUT</a>
-        <a id="homelog" href="/users/<%= current_user.id %>/edit">EDIT ACCOUNT</a>
+        <div id="space">
+          <a id="homelog" href="/users/<%= current_user.id %>">HOME</a>
+          <a id="homelog" href="/logout">LOG OUT</a>
+          <a id="homelog" href="/users/<%= current_user.id %>/edit">EDIT ACCOUNT</a>
+        </div>
         <h1 id="banner"><%= "#{current_user.username}'s ShutterLogger" %></h1><br /><br />
         <% else %>
         <a id="homelog" href="/">MAIN MENU</a>

@@ -34,6 +34,17 @@
     padding: 10px 100px 50px 100px;
   }
 
+  div#center2 {
+    margin: auto;
+    width: fit-content;
+    height: auto;
+    padding: 10px;
+    text-align: center;
+    background-color:rgb(255, 215, 182);
+    float: none;
+    padding:10px;
+  }
+
   div#newform {
     margin: auto;
     width: fit-content;
@@ -71,6 +82,10 @@
     padding:10px;
     border:2px solid rgb(211, 148, 92);
     padding: 10px 100px 50px 100px;
+  }
+
+  div#space {
+    padding-bottom: 5%;
   }
 
   h3#log {
@@ -173,7 +188,6 @@
     margin: auto;
     text-align: center;
     position: relative;
-    
     padding: 15px;
   }
 
@@ -247,3 +261,4 @@
     width: 80%;
     max-width: initial;
   }
+
