@@ -3,7 +3,6 @@ class Photo < ActiveRecord::Base
     belongs_to :roll
     belongs_to :len
     belongs_to :camera
-    has_one :camera_photos, through: :camera
 
     validates :name, presence: true
     validates :rating, presence: true

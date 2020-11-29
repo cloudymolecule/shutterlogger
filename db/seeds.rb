@@ -95,30 +95,30 @@ photo_list.each do |name, description, shutter, aperture, focal_length, date, ti
     Photo.create(name: name, description: description, shutter: shutter, aperture: aperture, focal_length: focal_length, date: date, time: time, location: location, rating: rating, roll_id: roll_id, len_id: len_id, camera_id: camera_id,user_id: user_id, created_at: created_at, updated_at: updated_at)
 end
 
-#<CameraPhotos id: nil, camera_id: nil, photo_id: nil, created_at: nil, updated_at: nil>
-camera_photos_list = [
-    [1, 1, Time.now, Time.now],
-    [1, 2, Time.now, Time.now],
-    [2, 3, Time.now, Time.now],
-    [2, 4, Time.now, Time.now],
-    [3, 5, Time.now, Time.now],
-    [3, 6, Time.now, Time.now],
-    [4, 7, Time.now, Time.now],
-    [4, 8, Time.now, Time.now],
-    [5, 9, Time.now, Time.now],
-    [5, 10, Time.now, Time.now],
-    [6, 11, Time.now, Time.now],
-    [6, 12, Time.now, Time.now],
-    [7, 13, Time.now, Time.now],
-    [7, 14, Time.now, Time.now],
-    [8, 15, Time.now, Time.now],
-    [8, 16, Time.now, Time.now],
-    [9, 17, Time.now, Time.now],
-    [9, 18, Time.now, Time.now],
-    [10, 19, Time.now, Time.now],
-    [10, 20, Time.now, Time.now]
-]
+# #<CameraPhotos id: nil, camera_id: nil, photo_id: nil, created_at: nil, updated_at: nil>
+# camera_photos_list = [
+#     [1, 1, Time.now, Time.now],
+#     [1, 2, Time.now, Time.now],
+#     [2, 3, Time.now, Time.now],
+#     [2, 4, Time.now, Time.now],
+#     [3, 5, Time.now, Time.now],
+#     [3, 6, Time.now, Time.now],
+#     [4, 7, Time.now, Time.now],
+#     [4, 8, Time.now, Time.now],
+#     [5, 9, Time.now, Time.now],
+#     [5, 10, Time.now, Time.now],
+#     [6, 11, Time.now, Time.now],
+#     [6, 12, Time.now, Time.now],
+#     [7, 13, Time.now, Time.now],
+#     [7, 14, Time.now, Time.now],
+#     [8, 15, Time.now, Time.now],
+#     [8, 16, Time.now, Time.now],
+#     [9, 17, Time.now, Time.now],
+#     [9, 18, Time.now, Time.now],
+#     [10, 19, Time.now, Time.now],
+#     [10, 20, Time.now, Time.now]
+# ]
 
-camera_photos_list.each do |camera_id, photo_id, created_at, updated_at|
-    CameraPhotos.create(camera_id: camera_id, photo_id: photo_id, created_at: created_at, updated_at: updated_at)
-end
+# camera_photos_list.each do |camera_id, photo_id, created_at, updated_at|
+#     CameraPhotos.create(camera_id: camera_id, photo_id: photo_id, created_at: created_at, updated_at: updated_at)
+# end

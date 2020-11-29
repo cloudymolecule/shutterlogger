@@ -13,13 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20201122044544) do
 
-  create_table "camera_photos", force: :cascade do |t|
-    t.integer  "camera_id"
-    t.integer  "photo_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "cameras", force: :cascade do |t|
     t.string   "nickname"
     t.string   "make"

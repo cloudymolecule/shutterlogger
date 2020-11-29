@@ -66,13 +66,13 @@ class PhotosController < ApplicationController
       error.each do |e|
         
         if e == "Camera can't be blank"
-          e = "You must select a Camera"
+          e = "You must select a Camera (if none available, please add one first)"
         end
         if e == "Len can't be blank"
-          e = "You must select a Lens"
+          e = "You must select a Lens (if none available, please add one first)"
         end
         if e == "Roll can't be blank"
-          e = "You must select a Roll"
+          e = "You must select a Roll (if none available, please add one first)"
         end
         @errors << e
       end
