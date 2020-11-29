@@ -33,16 +33,19 @@ class CamerasController < ApplicationController
     redirect_if_not_logged_in
     if camera = Camera.find_by(id: params[:id])
       if camera.user_id == session[:user_id]
-        if @photos = camera.photos && @photos != []
+        @photos = camera.photos
+        if @photos != [] && @photos[0] != nil
           erb :"/cameras/photo_list"
         else
+          @cameras = current_user.cameras
           flash[:message] = "No photos to show"
+          erb :"/cameras/index"
         end
       else
         not_authorized
       end
     else
-      redirect to "/cameras"
+      erb :"/cameras/index"
     end
   end
 

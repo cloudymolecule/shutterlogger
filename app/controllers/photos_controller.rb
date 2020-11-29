@@ -8,7 +8,14 @@ class PhotosController < ApplicationController
 
   get "/photos/new" do
     redirect_if_not_logged_in
-    erb :"/photos/new"
+    
+    
+    if current_user.rolls.count == 0 || current_user.cameras.count == 0 || current_user.lens.count == 0
+      flash[:message] = "Please add a Camera, a Lens and Film Roll before adding a photo"
+      redirect to "/users/show"
+    else
+      erb :"/photos/new"
+    end
   end
 
   post "/photos" do
@@ -79,6 +86,7 @@ class PhotosController < ApplicationController
       erb :"/photos/new"
     end
   end
+  
 
   get "/photos/:id" do
     redirect_if_not_logged_in

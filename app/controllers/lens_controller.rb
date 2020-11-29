@@ -8,7 +8,12 @@ class LensController < ApplicationController
   
   get "/lens/new" do
     redirect_if_not_logged_in
-    erb :"/lens/new"
+    if current_user.cameras.count == 0
+      flash[:message] = "Please add a Camera before adding a Lens"
+      redirect to "/users/show"
+    else
+      erb :"/lens/new"
+    end
   end
 
   post "/lens" do

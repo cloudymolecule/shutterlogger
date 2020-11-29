@@ -29,9 +29,9 @@
         <input id="newformlabel" type="text" name="roll[comments]"><br /><br />
 
         <div id="selectcam">
-            <p>Select Camera where Film Roll is being loaded:</p>
+            <p>Select Camera where Film Roll is being loaded (only unloaded cameras shown):</p>
         </div>
-        <% current_user.cameras.all.each do |camera| %>
+        <% @cameras.each do |camera| %>
             <div id="radio">
                 <input type="radio" name="roll[camera_id]" id="<%= camera.id %>" value="<%= camera.id %>"><%= " #{camera.make} / Model: #{camera.model}"%><br>
             </div>
