@@ -66,11 +66,11 @@ class ApplicationController < Sinatra::Base
       day = day_conversion(date_time[2])
       year = date_time[0].to_s
       
-      hour = date_time[3].to_s
-      minutes = date_time[4].to_s
-      seconds = date_time[5].to_s
+      hour = date_time[3]
+      minutes = date_time[4]
+      seconds = date_time[5]
 
-      string = "Added on: #{month} #{day}, #{year} at #{hour}:#{minutes}"
+      string = "Added on: #{month} #{day}, #{year} at #{hour}:#{minutes}:#{seconds}"
       result = [string, month, day, year, hour, minutes, seconds]
     end
 
@@ -88,11 +88,11 @@ class ApplicationController < Sinatra::Base
       day = day_conversion(date_time[2])
       year = date_time[0].to_s
       
-      hour = date_time[3].to_s
-      minutes = date_time[4].to_s
-      seconds = date_time[5].to_s
+      hour = date_time[3]
+      minutes = date_time[4]
+      seconds = date_time[5]
       
-      string = "Edited on: #{month} #{day}, #{year} at #{hour}:#{minutes}"
+      string = "Edited on: #{month} #{day}, #{year} at #{hour}:#{minutes}:#{seconds}"
       result = [string, month, day, year, hour, minutes, seconds]
       if created[1] == result[1] && created[2] == result[2] && created[3] == result[3] && created[4] == result[4] && created[5] == result[5] && created[6] == result[6]
         final = "Edited on: No edits yet" 

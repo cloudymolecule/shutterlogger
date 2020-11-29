@@ -7,5 +7,4 @@ class Camera < ActiveRecord::Base
 
     validates :make, presence: true
     validates :model, presence: true
-
 end
