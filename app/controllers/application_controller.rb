@@ -112,7 +112,9 @@ class ApplicationController < Sinatra::Base
         day = "2nd"
       when 3
         day = "3rd"
-      when 4..31
+      when 31
+        day = "31st"
+      when 4..30
         day = day.to_s + "th"
     end
   end
@@ -140,7 +142,7 @@ class ApplicationController < Sinatra::Base
       when 10
         month = "October"
       when 11
-        month = "Nov"
+        month = "November"
       when 12
         month = "December"
     end
