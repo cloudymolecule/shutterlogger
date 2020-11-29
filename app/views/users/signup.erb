@@ -1,4 +1,7 @@
 <div id="center">
+    <% if flash[:message] %>
+        <%= flash[:message] %><br />
+    <% end %>
     <% if @errors %>
         <% @errors.each do |error| %>
             <%= error %><br />

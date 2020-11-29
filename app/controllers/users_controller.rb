@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
   post "/signup" do
     user = User.new(params[:user])
+    user.created_at = Time.now
+    user.updated_at = Time.now
     if user.save
       session[:user_id] = user.id
       redirect to "/users/#{user.id}"
@@ -33,11 +35,6 @@ class UsersController < ApplicationController
     redirect to "/login"
   end
 
-  # post "/users" do
-  #   redirect_if_not_logged_in
-  #   redirect to "/users"
-  # end
-
   get "/users/:id" do
     redirect_if_not_logged_in
     @user = User.find_by(id: params[:id])
@@ -46,17 +43,35 @@ class UsersController < ApplicationController
 
   get "/users/:id/edit" do
     redirect_if_not_logged_in
-    erb :"/users/edit"
+    @user = User.find_by(id: params[:id])
+    if @user.id == session[:user_id]
+      erb :"/users/edit"
+    else
+      not_authorized
+    end
   end
 
   patch "/users/:id" do
-    redirect_if_not_logged_in
-    redirect to "/users/:id"
+    user = User.find_by(id: params[:id])
+    user.updated_at = Time.now
+    user.update(params[:user])
+    if user.save
+      session.clear
+      flash[:message] = "Account updated successfully."
+      redirect to "/login"
+    else
+      @errors = user.errors.full_messages
+      erb :"/users/edit"
+    end
   end
 
-  delete "/users/:id/delete" do
+  delete "/users/:id" do
     redirect_if_not_logged_in
-    redirect to "/users"
+    session.clear
+    user = User.find_by(id: params[:id])
+    flash[:message] = "Account deleted successfully."
+    user.destroy
+    redirect to "/signup"
   end
 
 end

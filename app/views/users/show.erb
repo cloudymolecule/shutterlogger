@@ -1,6 +1,11 @@
 <div id="show2">
     <% if flash[:message] %>
-    <%= flash[:message] %><br />
+        <%= flash[:message] %><br />
+    <% end %>
+    <% if @errors %>
+        <% @errors.each do |error| %>
+            <%= error %><br />
+        <%end%>
     <% end %>
     <h4>Looks at your...</h4><br />
     <a href="/cameras" id="showmenu"><span id="obmen">Cameras</span></a>
