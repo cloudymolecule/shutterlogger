@@ -56,18 +56,18 @@
 
 
         <div id="selectcam">
-            <p>Select Camera Shot With:</p>
+            <p>Select Camera Shot With (only loaded cameras shown):</p>
         </div>
-        <% current_user.cameras.all.each do |camera| %>
+        <% @cameras.each do |camera| %>
             <div id="radio">
                 <input type="radio" name="photo[camera_id]" id="<%= camera.id %>" value="<%= camera.id %>"><%= " #{camera.make} / Model: #{camera.model}"%><br>
             </div>
         <% end %><br>
 
         <div id="selectcam">
-            <p>Select Roll Used:</p>
+            <p>Select Roll Used (only rolls with exposures left shown):</p>
         </div>
-        <% current_user.rolls.all.each do |roll| %>
+        <% @rolls.each do |roll| %>
             <div id="radio">
                 <input type="radio" name="photo[roll_id]" id="<%= roll.id %>" value="<%= roll.id %>"><%= " #{roll.brand} / Comments: #{roll.comments}"%><br>
             </div>
