@@ -1,0 +1,10 @@
+<div id="show">
+    <%if flash[:message] %>
+    <p><%= flash[:message] %></p>
+    <% end %>
+    <h3 id="log">Photos taken on: <%="#{@photos[0].roll.brand} / ISO #{@photos[0].roll.iso}"%></h3><br />
+    <% @photos.each do |photo| %>
+        <a id="showmenu" href="/photos/<%= photo.id %>"><%= photo.name %><%= " - #{photo.rating} star rating" %> </a><br /><br />
+    <% end %><br /><br />
+    <a href="/users/<%=current_user.id%>" id="showmenu">Home</a>
+</div><br /><br />

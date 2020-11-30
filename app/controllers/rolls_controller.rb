@@ -52,6 +52,26 @@ class RollsController < ApplicationController
     end
   end
 
+  get "/rolls/:id/photos" do
+    redirect_if_not_logged_in
+    if roll = Roll.find_by(id: params[:id])
+      if roll.user_id == session[:user_id]
+        @photos = roll.photos
+        if @photos != [] && @photos[0] != nil
+          erb :"/rolls/photo_list"
+        else
+          @rolls = current_user.rolls
+          flash[:message] = "No photos to show"
+          erb :"/rolls/index"
+        end
+      else
+        not_authorized
+      end
+    else
+      erb :"/cameras/index"
+    end
+  end
+
   get "/rolls/:id" do
     redirect_if_not_logged_in
     if @roll = Roll.find_by(id: params[:id])

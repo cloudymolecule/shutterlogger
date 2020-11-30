@@ -23,7 +23,7 @@ class PhotosController < ApplicationController
       cams = current_user.cameras
       @cameras = []
       cams.each do |c|
-        if c.loaded == false
+        if c.loaded == 0
           @cameras << c
         end
       end
