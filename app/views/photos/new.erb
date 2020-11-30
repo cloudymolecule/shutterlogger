@@ -58,20 +58,30 @@
         <div id="selectcam">
             <p>Select Camera Shot With (only loaded cameras shown):</p>
         </div>
-        <% @cameras.each do |camera| %>
-            <div id="radio">
-                <input type="radio" name="photo[camera_id]" id="<%= camera.id %>" value="<%= camera.id %>"><%= " #{camera.make} / Model: #{camera.model}"%><br>
-            </div>
-        <% end %><br>
+
+        <% if @cameras  == [] || @cameras == nil %>
+            <p>No unloaded cameras to show, please unload or add a new one.</p>
+        <% else %>
+            <% @cameras.each do |camera| %>
+                <div id="radio">
+                    <input type="radio" name="photo[camera_id]" id="<%= camera.id %>" value="<%= camera.id %>"><%= " #{camera.make} / Model: #{camera.model}"%><br>
+                </div>
+            <% end %><br>
+        <% end %>
 
         <div id="selectcam">
             <p>Select Roll Used (only rolls with exposures left shown):</p>
         </div>
-        <% @rolls.each do |roll| %>
-            <div id="radio">
-                <input type="radio" name="photo[roll_id]" id="<%= roll.id %>" value="<%= roll.id %>"><%= " #{roll.brand} / Comments: #{roll.comments}"%><br>
-            </div>
-        <% end %><br>
+
+        <% if @rolls  == [] || @rolls == nil %>
+            <p>No unloaded rolls to show, please unload or add a new one.</p>
+        <% else %>
+            <% @rolls.each do |roll| %>
+                <div id="radio">
+                    <input type="radio" name="photo[roll_id]" id="<%= roll.id %>" value="<%= roll.id %>"><%= " #{roll.brand} / Comments: #{roll.comments}"%><br>
+                </div>
+            <% end %><br>
+        <% end %>
 
         <div id="selectcam">
             <p>Select Lens Shot With:</p>

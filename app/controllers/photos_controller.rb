@@ -23,7 +23,7 @@ class PhotosController < ApplicationController
       cams = current_user.cameras
       @cameras = []
       cams.each do |c|
-        if c.loaded == 0
+        if c.loaded == false
           @cameras << c
         end
       end
@@ -109,6 +109,21 @@ class PhotosController < ApplicationController
           e = "You must select a Roll (if none available, please add one first)"
         end
         @errors << e
+      end
+      rollz = current_user.rolls
+      @rolls = []
+      rollz.each do |r|
+        if r.exp_count != 0
+          @rolls << r
+        end
+      end
+
+      cams = current_user.cameras
+      @cameras = []
+      cams.each do |c|
+        if c.loaded == false
+          @cameras << c
+        end
       end
       erb :"/photos/new"
     end
