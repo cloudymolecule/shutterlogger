@@ -96,4 +96,32 @@ class CamerasController < ApplicationController
     redirect to "/cameras"
   end
   
+  get "/cameras/:id/unload" do
+    redirect_if_not_logged_in
+    if @camera = Camera.find_by(id: params[:id])
+      if @camera.user_id == session[:user_id]
+        if @camera.loaded == true
+          rolls = @camera.rolls
+          current_roll = nil
+          rolls.each do |r|
+            if r.exp_count != 0
+              current_roll = r 
+            end
+          end
+          current_roll.exp_count = 0
+          current_roll.save
+          @camera.loaded = 0
+          @camera.save
+          flash[:message] = "Camera successfully unloaded"
+
+          erb :"/cameras/show"
+        end
+        flash[:message] = "Camera already unloaded"
+        erb :"/cameras/show"
+      else
+        not_authorized
+      end
+    end
+  end
+
 end

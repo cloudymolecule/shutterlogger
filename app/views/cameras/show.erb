@@ -1,4 +1,7 @@
 <div id="show">
+    <%if flash[:message] %>
+    <p><%= flash[:message] %></p>
+    <% end %>
     <h3 id="log"><%= "Camera nickname: '#{@camera.nickname}'" %></h3><br />
     <p><%= "Make: #{@camera.make}" %></p>
     <p><%= "Model: #{@camera.model}" %></p><br /><br />
@@ -13,5 +16,6 @@
         <a href="/cameras" id="showmenu">Back to Listing</a>
     </form>
     <a href="/cameras/<%=@camera.id%>/photos" id="showmenu">See all photos taken with this Camera</a>
+    <a href="/cameras/<%=@camera.id%>/unload" id="showmenu">Unload Film Roll from this Camera</a>
     
 </div><br /><br />

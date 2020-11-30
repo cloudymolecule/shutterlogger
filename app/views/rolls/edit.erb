@@ -15,12 +15,12 @@
         <div id="selectcam">
 
             <% if @roll.exp_count != 36 || @roll.exp_count != 24 && @roll.created_at != @roll.updated_at %>
-                <p>Film Roll exposure count cannot be edited after exposures already used.</p>
-                <p>If you delete this roll, all associated photos will be deleted as well.</p><br />
+                <p>Film Roll exposure count cannot be edited after exposures already used.</p><br />
+                <p>Exposure Count:</p>
+            <%else%>
+                <p>Select Exposure Count:</p>
             <%end%>
 
-            <p>Select Exposure Count:</p>
-            
             <label for="24">24</label>
             <input type="radio" id="24" name="roll[exp_count]" value="24" <% if @roll.exp_count != 24 %>disabled<% end %>>
 
@@ -38,11 +38,11 @@
         <input id="newformlabel" type="text" name="roll[comments]" value="<%= @roll.comments %>"><br /><br />
 
         <div id="selectcam">
-            <p>Select Camera where Film Roll is being loaded:</p>
+            <p>Camera cannot be changed after roll is loaded or roll is spent</p>
         </div>
         <% current_user.cameras.all.each do |camera| %>
             <div id="radio">
-                <input type="radio" name="roll[camera_id]" id="<%= camera.id %>" value="<%= camera.id %>" <% if @roll.camera_id == camera.id %>checked<% end %>><%= " #{camera.make} / Model: #{camera.model}"%><br>
+                <input type="radio" name="roll[camera_id]" id="<%= camera.id %>" value="<%= camera.id %>" <% if @roll.camera_id == camera.id %>checked disabled<% end %>disabled><%= " #{camera.make} / Model: #{camera.model}"%><br>
             </div>
         <% end %><br>
         
