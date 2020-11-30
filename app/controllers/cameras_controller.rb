@@ -112,12 +112,11 @@ class CamerasController < ApplicationController
           current_roll.save
           @camera.loaded = 0
           @camera.save
-          flash[:message] = "Camera successfully unloaded"
-
-          erb :"/cameras/show"
+          flash[:camera] = "Camera successfully unloaded"
+          redirect to "/cameras/#{@camera.id}"
         end
-        flash[:message] = "Camera already unloaded"
-        erb :"/cameras/show"
+        flash[:camera] = "Camera already unloaded"
+        redirect to "/cameras/#{@camera.id}"
       else
         not_authorized
       end
