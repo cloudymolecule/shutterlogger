@@ -3,7 +3,7 @@
     background-repeat: no-repeat;
     background-size: 60%;
     
-    background-attachment: initial;
+    background-attachment: fixed;
     background-color: rgb(249, 234, 212);
     color: #333;
     font-family: Sans-Serif;
