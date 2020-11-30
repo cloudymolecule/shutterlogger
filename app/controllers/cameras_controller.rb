@@ -29,25 +29,6 @@ class CamerasController < ApplicationController
     end
   end
 
-  get "/cameras/:id/photos" do
-    redirect_if_not_logged_in
-    if camera = Camera.find_by(id: params[:id])
-      if camera.user_id == session[:user_id]
-        @photos = camera.photos
-        if @photos != [] && @photos[0] != nil
-          erb :"/cameras/photo_list"
-        else
-          flash[:message] = "No photos to show"
-          redirect to "/cameras/index"
-        end
-      else
-        not_authorized
-      end
-    else
-      erb :"/cameras/index"
-    end
-  end
-
   get "/cameras/:id" do
     redirect_if_not_logged_in
     if @camera = Camera.find_by(id: params[:id])
@@ -83,15 +64,15 @@ class CamerasController < ApplicationController
     if @camera.save
       redirect to "/cameras/#{@camera.id}"
     else
-      @errors = camera.errors.full_messages
+      @errors = @camera.errors.full_messages
       erb :"/cameras/edit"
     end
   end
 
   delete "/cameras/:id" do
-    @camera = Camera.find_by(id: params[:id])
-    flash[:message] = "#{@camera.make} - #{@camera.model} deleted successfully."
-    @camera.destroy
+    camera = Camera.find_by(id: params[:id])
+    flash[:message] = "#{camera.make} - #{camera.model} deleted successfully."
+    camera.destroy
     redirect to "/cameras"
   end
   
