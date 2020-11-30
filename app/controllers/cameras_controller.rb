@@ -37,9 +37,8 @@ class CamerasController < ApplicationController
         if @photos != [] && @photos[0] != nil
           erb :"/cameras/photo_list"
         else
-          @cameras = current_user.cameras
           flash[:message] = "No photos to show"
-          erb :"/cameras/index"
+          redirect to "/cameras/index"
         end
       else
         not_authorized
