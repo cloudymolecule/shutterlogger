@@ -32,6 +32,9 @@ class PhotosController < ApplicationController
   end
 
   post "/photos" do
+    params[:photo][:description] = params[:photo][:description].gsub(/\r/," ")
+    params[:photo][:description] = params[:photo][:description].gsub(/\n/," ")
+    params[:photo][:description] = params[:photo][:description].gsub(/\s+/, "")
     if params[:photo][:description] == ""
       params[:photo][:description] = "No description"
     end
@@ -137,9 +140,14 @@ class PhotosController < ApplicationController
 
   patch "/photos/:id" do
     @photo = Photo.find_by(id: params[:id])
+    params[:photo][:description] = params[:photo][:description].gsub(/\r/," ")
+    params[:photo][:description] = params[:photo][:description].gsub(/\n/," ")
+    params[:photo][:description] = params[:photo][:description].gsub(/\s+/, "")
     if params[:photo][:description] == ""
       params[:photo][:description] = "No description"
     end
+
+
 
     if params[:photo][:shutter] == ""
       params[:photo][:shutter] = "No info"
