@@ -12,7 +12,8 @@
   }
 
   h1#banner {
-    text-shadow: 6px 6px rgb(255, 155, 124);
+    -webkit-text-stroke: 2px rgb(255, 224, 191);
+    text-shadow: 3px 3px rgb(255, 155, 124);
     font-size: 60px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
