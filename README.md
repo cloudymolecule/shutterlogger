@@ -26,6 +26,11 @@ INSTRUCTIONS
 
 4 - Cameras, lenses, rolls, and photos can all be updated.
 
+LICENSE
+
+https://github.com/cloudymolecule/shutterlogger/blob/main/LICENSE
+
+
 TRIVIA
 
 The background camera is a 1978 Canon AE-1 with a F1.4 50MM lens I found at a flea market. I use it to this day :)
