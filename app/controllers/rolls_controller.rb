@@ -46,6 +46,13 @@ class RollsController < ApplicationController
         if e == "Camera can't be blank"
           e = "You must select a Camera"
         end
+        cams = current_user.cameras
+        @cameras = []
+        cams.each do |c|
+          if c.loaded == false
+            @cameras << c
+          end
+        end
         @errors << e
       end
       erb :"/rolls/new"
@@ -62,7 +69,7 @@ class RollsController < ApplicationController
         else
           @rolls = current_user.rolls
           flash[:message] = "No photos to show"
-          erb :"/rolls/index"
+          redirect to "/rolls/index"
         end
       else
         not_authorized
@@ -131,7 +138,7 @@ class RollsController < ApplicationController
   delete "/rolls/:id" do
     redirect_if_not_logged_in
     roll = Roll.find_by(id: params[:id])
-    flash[:message] = "#{roll.brand} - #{roll.comments} | deleted successfully."
+    flash[:message] = "#{roll.brand} / ISO #{roll.iso} | deleted successfully."
     camera = Camera.find_by(id: roll.camera.id)
     camera.update(loaded: 0)
     camera.save
