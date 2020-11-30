@@ -13,12 +13,19 @@
         <input type="hidden" name="roll[user_id]" value="<%= current_user.id %>">
 
         <div id="selectcam">
+
+            <% if @roll.exp_count != 36 || @roll.exp_count != 24 && @roll.created_at != @roll.updated_at %>
+                <p>Film Roll exposure count cannot be edited after exposures already used.</p>
+                <p>If you delete this roll, all associated photos will be deleted as well.</p><br />
+            <%end%>
+
             <p>Select Exposure Count:</p>
+            
             <label for="24">24</label>
-            <input type="radio" id="24" name="roll[exp_count]" value="24" <% if @roll.exp_count == 24 %>checked<% end %>>
+            <input type="radio" id="24" name="roll[exp_count]" value="24" <% if @roll.exp_count != 24 %>disabled<% end %>>
 
             <label for="36">36</label>
-            <input type="radio" id="36" name="roll[exp_count]" value="36" <% if @roll.exp_count == 36 %>checked<% end %>>
+            <input type="radio" id="36" name="roll[exp_count]" value="36" <% if @roll.exp_count != 36 %>disabled<% end %>>
         </div><br /><br ?>
 
         <label for="newformlabel">Brand:</label>

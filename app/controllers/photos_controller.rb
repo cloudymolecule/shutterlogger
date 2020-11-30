@@ -12,7 +12,6 @@ class PhotosController < ApplicationController
       flash[:message] = "Please add a Camera, a Lens and Film Roll before adding a photo"
       redirect to "/users/show"
     else
-
       rollz = current_user.rolls
       @rolls = []
       rollz.each do |r|
@@ -28,12 +27,6 @@ class PhotosController < ApplicationController
           @cameras << c
         end
       end
-     
-
-
-
-
-
       erb :"/photos/new"
     end
   end
@@ -84,7 +77,18 @@ class PhotosController < ApplicationController
         created_at: Time.now,
         updated_at: Time.now
       )
-      
+
+    if params[:photo][:roll_id] #working now
+      roll = Roll.find_by(id: params[:photo][:roll_id]) 
+      roll.update(exp_count: (roll.exp_count -= 1))
+      roll.save
+      if roll.exp_count == 0
+        cam = Camera.find_by(id: roll.camera.id)
+        cam.update(loaded: 0)
+        flash[:message] = "Film Roll spent. #{cam.make} unloaded"
+      end
+    end
+
     if photo.save
       redirect to "/photos/#{photo.id}"
     else
