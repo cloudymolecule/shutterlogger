@@ -23,7 +23,7 @@ class PhotosController < ApplicationController
       cams = current_user.cameras
       @cameras = []
       cams.each do |c|
-        if c.loaded == false
+        if c.loaded == true
           @cameras << c
         end
       end
@@ -81,18 +81,19 @@ class PhotosController < ApplicationController
         updated_at: Time.now
       )
 
-    if params[:photo][:roll_id] #working now
-      roll = Roll.find_by(id: params[:photo][:roll_id]) 
-      roll.update(exp_count: (roll.exp_count -= 1))
-      roll.save
-      if roll.exp_count == 0
-        cam = Camera.find_by(id: roll.camera.id)
-        cam.update(loaded: 0)
-        flash[:message] = "Film Roll spent. #{cam.make} unloaded"
-      end
-    end
+    
 
     if photo.save
+      if params[:photo][:roll_id] #working now
+        roll = Roll.find_by(id: params[:photo][:roll_id]) 
+        roll.update(exp_count: (roll.exp_count -= 1))
+        roll.save
+        if roll.exp_count == 0
+          cam = Camera.find_by(id: roll.camera.id)
+          cam.update(loaded: 0)
+          flash[:message] = "Film Roll spent. #{cam.make} unloaded"
+        end
+      end
       redirect to "/photos/#{photo.id}"
     else
       @errors = []
@@ -121,7 +122,7 @@ class PhotosController < ApplicationController
       cams = current_user.cameras
       @cameras = []
       cams.each do |c|
-        if c.loaded == false
+        if c.loaded == true
           @cameras << c
         end
       end

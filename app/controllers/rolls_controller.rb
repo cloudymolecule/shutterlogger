@@ -142,6 +142,9 @@ class RollsController < ApplicationController
     camera = Camera.find_by(id: roll.camera.id)
     camera.update(loaded: 0)
     camera.save
+    roll.photos.each do |p|
+      p.destroy
+    end
     roll.destroy
     redirect to "/rolls"
   end
