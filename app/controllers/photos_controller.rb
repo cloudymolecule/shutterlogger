@@ -230,7 +230,7 @@ class PhotosController < ApplicationController
 
   delete "/photos/:id" do
     photo = Photo.find_by(id: params[:id])
-    flash[:message] = "'#{photo.name}' | deleted successfully."
+    flash[:message] = "'#{photo.name}' deleted successfully."
     photo.destroy
     redirect to "/photos"
   end

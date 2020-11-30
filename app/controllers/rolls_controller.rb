@@ -138,7 +138,7 @@ class RollsController < ApplicationController
   delete "/rolls/:id" do
     redirect_if_not_logged_in
     roll = Roll.find_by(id: params[:id])
-    flash[:message] = "#{roll.brand} / ISO #{roll.iso} | deleted successfully."
+    flash[:message] = "#{roll.brand} / ISO #{roll.iso} deleted successfully."
     camera = Camera.find_by(id: roll.camera.id)
     camera.update(loaded: 0)
     camera.save
