@@ -11,6 +11,11 @@ class ApplicationController < Sinatra::Base
     set :method_override, true
   end
 
+  not_found do
+    flash[:message] = "Incorrect URL"
+    redirect to "/home"
+  end
+
   get "/" do
     if logged_in?
       redirect to "/users/#{current_user.id}"
