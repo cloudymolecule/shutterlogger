@@ -69,7 +69,7 @@ class RollsController < ApplicationController
         else
           @rolls = current_user.rolls
           flash[:message] = "No photos to show"
-          redirect to "/rolls/index"
+          redirect to "/rolls"
         end
       else
         not_authorized
