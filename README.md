@@ -9,7 +9,9 @@ It allows you to keep track of your cameras, lenses, individual photos and even 
 
 INSTALL INSTRUCTIONS
 
-Clone and fork this project and run your webserver of choice from the root directory, shotgun was my development server of choice.
+Clone and fork this project 
+Run bundle install
+Run your webserver of choice (like Shotgun) from the root directory.
 
 
 INSTRUCTIONS
