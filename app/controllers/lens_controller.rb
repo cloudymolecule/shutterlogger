@@ -46,15 +46,18 @@ class LensController < ApplicationController
         not_authorized
       end
     else
-      redirect to "/lens"
+      not_authorized
     end
   end
 
   get "/lens/:id/edit" do
     redirect_if_not_logged_in
-    @len = Len.find_by(id: params[:id])
-    if @len.user_id == session[:user_id]
-      erb :"/lens/edit"
+    if @len = Len.find_by(id: params[:id])
+      if @len.user_id == session[:user_id]
+        erb :"/lens/edit"
+      else
+        not_authorized
+      end
     else
       not_authorized
     end

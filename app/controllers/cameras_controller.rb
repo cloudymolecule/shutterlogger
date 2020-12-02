@@ -38,15 +38,18 @@ class CamerasController < ApplicationController
         not_authorized
       end
     else
-      redirect to "/cameras"
+      not_authorized
     end
   end
 
   get "/cameras/:id/edit" do
     redirect_if_not_logged_in
-    @camera = Camera.find_by(id: params[:id])
-    if @camera.user_id == session[:user_id]
-      erb :"/cameras/edit"
+    if @camera = Camera.find_by(id: params[:id])
+      if @camera.user_id == session[:user_id]
+        erb :"/cameras/edit"
+      else
+        not_authorized
+      end
     else
       not_authorized
     end
@@ -100,6 +103,8 @@ class CamerasController < ApplicationController
       else
         not_authorized
       end
+    else
+      not_authorized
     end
   end
 

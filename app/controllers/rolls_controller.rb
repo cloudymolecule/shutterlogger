@@ -75,7 +75,7 @@ class RollsController < ApplicationController
         not_authorized
       end
     else
-      erb :"/cameras/index"
+      not_authorized
     end
   end
 
@@ -88,15 +88,18 @@ class RollsController < ApplicationController
         not_authorized
       end
     else
-      redirect to "/rolls"
+      not_authorized
     end
   end
 
   get "/rolls/:id/edit" do
     redirect_if_not_logged_in
-    @roll = Roll.find_by(id: params[:id])
-    if @roll.user_id == session[:user_id]
-      erb :"/rolls/edit"
+    if @roll = Roll.find_by(id: params[:id])
+      if @roll.user_id == session[:user_id]
+        erb :"/rolls/edit"
+      else
+        not_authorized
+      end
     else
       not_authorized
     end

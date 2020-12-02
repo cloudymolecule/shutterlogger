@@ -19,12 +19,24 @@ class ApplicationController < Sinatra::Base
     end
   end
 
+  get "/home" do
+    erb :"/users/show"
+  end
+
   get "/signup" do
-    erb :"/users/signup"
+    if logged_in?
+      erb :"users/show"
+    else
+      erb :"/users/signup"
+    end
   end
 
   get "/login" do
-    erb :"/users/login"
+    if logged_in?
+      erb :"users/show"
+    else
+      erb :"/users/login"
+    end
   end
 
   helpers do
@@ -46,7 +58,7 @@ class ApplicationController < Sinatra::Base
 
     def not_authorized
       flash[:message] = "Forbidden, can't access content!"
-      redirect to "/users/show"
+      redirect to "/home"
     end
 
     def loaded

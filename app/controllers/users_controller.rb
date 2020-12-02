@@ -37,21 +37,21 @@ class UsersController < ApplicationController
 
   get "/users/:id" do
     redirect_if_not_logged_in
-    @user = User.find_by(id: params[:id])
-    if @user.id == session[:user_id]
-      erb :"/users/show"
-    else
+    if session[:user_id] != params[:id]
       not_authorized
+    else
+      @user = User.find_by(id: params[:id])
+      erb :"/users/show"
     end
   end
 
   get "/users/:id/edit" do
     redirect_if_not_logged_in
-    @user = User.find_by(id: params[:id])
-    if @user.id == session[:user_id]
-      erb :"/users/edit"
-    else
+    if session[:user_id] != params[:id]
       not_authorized
+    else
+      @user = User.find_by(id: params[:id])
+      erb :"/users/edit"
     end
   end
 

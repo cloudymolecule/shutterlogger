@@ -140,7 +140,7 @@ class PhotosController < ApplicationController
         not_authorized
       end
     else
-      redirect to "/photos"
+      not_authorized
     end
   end
 
@@ -159,15 +159,18 @@ class PhotosController < ApplicationController
         not_authorized
       end
     else
-      erb :"/cameras/index"
+      not_authorized
     end
   end
 
   get "/photos/:id/edit" do
     redirect_if_not_logged_in
-    @photo = Photo.find_by(id: params[:id])
-    if @photo.user_id == session[:user_id]
-      erb :"/photos/edit"
+    if @photo = Photo.find_by(id: params[:id])
+      if @photo.user_id == session[:user_id]
+        erb :"/photos/edit"
+      else
+        not_authorized
+      end
     else
       not_authorized
     end
