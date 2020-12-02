@@ -95,7 +95,7 @@ class RollsController < ApplicationController
   get "/rolls/:id/edit" do
     redirect_if_not_logged_in
     @roll = Roll.find_by(id: params[:id])
-    if @roll.user_id == session[:user_id] #doing now
+    if @roll.user_id == session[:user_id]
       erb :"/rolls/edit"
     else
       not_authorized
