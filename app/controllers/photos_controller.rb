@@ -10,7 +10,7 @@ class PhotosController < ApplicationController
     redirect_if_not_logged_in
     if current_user.rolls.count == 0 || current_user.cameras.count == 0 || current_user.lens.count == 0
       flash[:message] = "Please add a Camera, a Lens and Film Roll before adding a photo"
-      redirect to "/users/show"
+      redirect to "/home"
     else
       rollz = current_user.rolls
       @rolls = []
