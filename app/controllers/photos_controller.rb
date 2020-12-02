@@ -84,7 +84,7 @@ class PhotosController < ApplicationController
     
 
     if photo.save
-      if params[:photo][:roll_id] #working now
+      if params[:photo][:roll_id]
         roll = Roll.find_by(id: params[:photo][:roll_id]) 
         roll.update(exp_count: (roll.exp_count -= 1))
         roll.save

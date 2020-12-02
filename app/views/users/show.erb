@@ -1,6 +1,6 @@
 <div id="show2">
     <% if flash[:message] %>
-        <%= flash[:message] %><br />
+        <h3><%= flash[:message] %></h3><br />
     <% end %>
     <% if @errors %>
         <% @errors.each do |error| %>
