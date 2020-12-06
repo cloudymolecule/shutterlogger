@@ -75,7 +75,42 @@ class UsersController < ApplicationController
     user = User.find_by(id: params[:id])
     flash[:message] = "Account deleted successfully."
     user.destroy
+
+    rolls = Roll.all
+    cameras = Camera.all
+    photos = Photo.all
+    lens = Len.all 
+    
+    
+    rolls.each do |roll|
+      if roll.user_id == session[:user_id].to_i
+      roll.destroy
+      end
+    end
+  
+    cameras.each do |camera|
+      if camera.user_id == session[:user_id].to_i
+        camera.destroy
+      end
+    end
+  
+    photos.each do |photo|
+      if photo.user_id == session[:user_id].to_i
+        photo.destroy
+      end
+    end
+  
+    lens.each do |len|
+      if len.user_id == session[:user_id].to_i
+        len.destroy
+      end
+    end
+    
+
     redirect to "/signup"
+
+
+    
   end
 
 end

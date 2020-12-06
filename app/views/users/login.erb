@@ -2,6 +2,7 @@
     <% if flash[:message] %>
         <%= flash[:message] %><br />
     <% end %>
+    <% flash[:message] = nil %>
     <h3 id="log">Log in</h3><br />
     <form action="/login" method="post">
 

@@ -2,6 +2,7 @@
     <% if flash[:message] %>
         <%= flash[:message] %><br />
     <% end %>
+    <% flash[:message] = nil %>
     <% if @errors %>
         <% @errors.each do |error| %>
             <%= error %><br />

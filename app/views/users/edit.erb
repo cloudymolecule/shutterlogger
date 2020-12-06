@@ -24,6 +24,6 @@
     <form id="showmenu" method="POST" action="/users/<%= @user.id %>">
         <input type="hidden" name="_method" value="DELETE">
         <a href="/users/<%=current_user.id%>" id="showmenu">Back to Main Menu</a><br /><br /><br />
-        <input id="delsubmit" type="submit" onclick="return confirm('Are you sure you want to delete your account?');"value="Delete Account">
+        <input id="delsubmit" type="submit" onclick="return confirm('Are you sure you want to delete your account and all your assets?');"value="Delete Account">
     </form>
 </div>
