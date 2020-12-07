@@ -71,46 +71,43 @@ class UsersController < ApplicationController
 
   delete "/users/:id" do
     redirect_if_not_logged_in
-    session.clear
     user = User.find_by(id: params[:id])
-    flash[:message] = "Account deleted successfully."
-    user.destroy
 
     rolls = Roll.all
     cameras = Camera.all
     photos = Photo.all
     lens = Len.all 
     
-    
     rolls.each do |roll|
-      if roll.user_id == session[:user_id].to_i
+      if roll.user_id == user.id
       roll.destroy
       end
     end
   
     cameras.each do |camera|
-      if camera.user_id == session[:user_id].to_i
+      if camera.user_id == user.id
         camera.destroy
       end
     end
   
     photos.each do |photo|
-      if photo.user_id == session[:user_id].to_i
+      if photo.user_id == user.id
         photo.destroy
       end
     end
   
     lens.each do |len|
-      if len.user_id == session[:user_id].to_i
+      if len.user_id == user.id
         len.destroy
       end
     end
-    
+
+    session.clear
+    user.destroy
+    flash[:message] = "Account deleted successfully."
 
     redirect to "/signup"
 
-
-    
   end
 
 end
