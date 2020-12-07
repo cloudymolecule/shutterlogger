@@ -35,28 +35,32 @@ class RollsController < ApplicationController
       created_at: Time.now,
       updated_at: Time.now
     )
-      if roll.save
-        camera = Camera.find_by(id: params[:roll][:camera_id])
-        camera.loaded = 1
-        camera.save
-        redirect to "/rolls/#{roll.id}"
-      else
-        @errors = []
-        error = roll.errors.full_messages
-        error.each do |e|
-          if e == "Camera can't be blank"
-            e = "You must select a Camera"
-          end
-          cams = current_user.cameras
-          @cameras = []
-          cams.each do |c|
-            if c.loaded == false
-              @cameras << c
+      if roll.user_id == session[:user_id]
+        if roll.save
+          camera = Camera.find_by(id: params[:roll][:camera_id])
+          camera.loaded = 1
+          camera.save
+          redirect to "/rolls/#{roll.id}"
+        else
+          @errors = []
+          error = roll.errors.full_messages
+          error.each do |e|
+            if e == "Camera can't be blank"
+              e = "You must select a Camera"
             end
+            cams = current_user.cameras
+            @cameras = []
+            cams.each do |c|
+              if c.loaded == false
+                @cameras << c
+              end
+            end
+            @errors << e
           end
-          @errors << e
+          erb :"/rolls/new"
         end
-        erb :"/rolls/new"
+      else
+        not_authorized
       end
     else
       not_authorized
@@ -121,24 +125,27 @@ class RollsController < ApplicationController
         user_id: params[:roll][:user_id],
         updated_at: Time.now
       )
-
-      if roll.save
-        camera = Camera.find_by(id: params[:roll][:camera_id])
-        camera.loaded = 1
-        camera.save
-        redirect to "/rolls/#{roll.id}"
-      else
-        @errors = []
-        error = roll.errors.full_messages
-        error.each do |e|
-          if e == "Camera can't be blank"
-            e = "You must select a Camera"
+      if roll.user_id == session[:user_id]
+        if roll.save
+          camera = Camera.find_by(id: params[:roll][:camera_id])
+          camera.loaded = 1
+          camera.save
+          redirect to "/rolls/#{roll.id}"
+        else
+          @errors = []
+          error = roll.errors.full_messages
+          error.each do |e|
+            if e == "Camera can't be blank"
+              e = "You must select a Camera"
+            end
+            @errors << e
           end
-          @errors << e
+          @errors = roll.errors.full_messages
+          @roll = roll
+          erb :"/rolls/edit"
         end
-        @errors = roll.errors.full_messages
-        @roll = roll
-        erb :"/rolls/edit"
+      else
+        not_authorized
       end
     else
       not_authorized
@@ -148,17 +155,21 @@ class RollsController < ApplicationController
   delete "/rolls/:id" do
     redirect_if_not_logged_in
     if roll = Roll.find_by(id: params[:id])
-      flash[:message] = "#{roll.brand} / ISO #{roll.iso} deleted successfully."
-      if camera = Camera.find_by(id: roll.camera_id)
-        camera
-        camera.update(loaded: 0)
-        camera.save
+      if roll.user_id == session[:user_id]
+        flash[:message] = "#{roll.brand} / ISO #{roll.iso} deleted successfully."
+        if camera = Camera.find_by(id: roll.camera_id)
+          camera
+          camera.update(loaded: 0)
+          camera.save
+        end
+        roll.photos.each do |p|
+          p.destroy
+        end
+        roll.destroy
+        redirect to "/rolls"
+      else
+        not_authorized
       end
-      roll.photos.each do |p|
-        p.destroy
-      end
-      roll.destroy
-      redirect to "/rolls"
     else
       not_authorized
     end
