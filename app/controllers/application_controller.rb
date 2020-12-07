@@ -25,6 +25,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/home" do
+    redirect_if_not_logged_in
     erb :"/users/show"
   end
 

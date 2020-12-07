@@ -56,57 +56,64 @@ class UsersController < ApplicationController
   end
 
   patch "/users/:id" do
-    user = User.find_by(id: params[:id])
-    user.updated_at = Time.now
-    user.update(params[:user])
-    if user.save
-      session.clear
-      flash[:message] = "Account updated successfully."
-      redirect to "/login"
+    redirect_if_not_logged_in
+    if user = User.find_by(id: params[:id])
+      user.updated_at = Time.now
+      user.update(params[:user])
+      if user.save
+        session.clear
+        flash[:message] = "Account updated successfully."
+        redirect to "/login"
+      else
+        @errors = user.errors.full_messages
+        erb :"/users/edit"
+      end
     else
-      @errors = user.errors.full_messages
-      erb :"/users/edit"
+      not_authorized
     end
   end
 
   delete "/users/:id" do
     redirect_if_not_logged_in
-    user = User.find_by(id: params[:id])
+    if user = User.find_by(id: params[:id])
 
-    rolls = Roll.all
-    cameras = Camera.all
-    photos = Photo.all
-    lens = Len.all 
+      rolls = Roll.all
+      cameras = Camera.all
+      photos = Photo.all
+      lens = Len.all 
+      
+      rolls.each do |roll|
+        if roll.user_id == user.id
+        roll.destroy
+        end
+      end
     
-    rolls.each do |roll|
-      if roll.user_id == user.id
-      roll.destroy
+      cameras.each do |camera|
+        if camera.user_id == user.id
+          camera.destroy
+        end
       end
-    end
-  
-    cameras.each do |camera|
-      if camera.user_id == user.id
-        camera.destroy
+    
+      photos.each do |photo|
+        if photo.user_id == user.id
+          photo.destroy
+        end
       end
-    end
-  
-    photos.each do |photo|
-      if photo.user_id == user.id
-        photo.destroy
+    
+      lens.each do |len|
+        if len.user_id == user.id
+          len.destroy
+        end
       end
-    end
-  
-    lens.each do |len|
-      if len.user_id == user.id
-        len.destroy
-      end
-    end
 
-    session.clear
-    user.destroy
-    flash[:message] = "Account deleted successfully."
+      session.clear
+      user.destroy
+      flash[:message] = "Account deleted successfully."
 
-    redirect to "/signup"
+      redirect to "/signup"
+    else
+      not_authorized
+    end
 
   end
 
