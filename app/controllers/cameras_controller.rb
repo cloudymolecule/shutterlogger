@@ -86,9 +86,13 @@ class CamerasController < ApplicationController
   delete "/cameras/:id" do
     redirect_if_not_logged_in
     if camera = Camera.find_by(id: params[:id])
-      flash[:message] = "#{camera.make} - #{camera.model} deleted successfully."
-      camera.destroy
-      redirect to "/cameras"
+      if camera.user_id == session[:user_id]
+        flash[:message] = "#{camera.make} - #{camera.model} deleted successfully."
+        camera.destroy
+        redirect to "/cameras"
+      else
+        not_authorized
+      end
     else
       not_authorized
     end
